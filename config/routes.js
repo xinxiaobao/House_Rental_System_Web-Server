@@ -19,7 +19,17 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/': 'HouseController.home'
+  '/': 'HouseController.home',
+
+
+
+
+
+  'GET /house/view/:id': 'HouseController.view',
+
+  'GET /house/edited/:id': 'HouseController.edited',
+
+  'POST /house/delete/:id': 'HouseController.delete',
 
 
   /***************************************************************************

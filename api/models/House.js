@@ -17,7 +17,7 @@ module.exports = {
       type: "string"
     },
 
-    estete: {
+    estate: {
       type: "string"
     },
 

@@ -13,11 +13,31 @@ module.exports = {
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
 
-    name: {
+    title: {
       type: "string"
     },
 
-    age: {
+    team: {
+      type: "string"
+    },
+
+    area: {
+      type: "number"
+    },
+
+    rent: {
+      type: "number"
+    },
+
+    URL: {
+      type: "string"
+    },
+
+    bedrooms: {
+      type: "number"
+    },
+
+    tenants: {
       type: "number"
     },
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗

@@ -27,7 +27,7 @@ module.exports.routes = {
 
   'GET /house/view/:id': 'HouseController.view',
 
-  'GET /house/edited/:id': 'HouseController.edited',
+  'GET /house/edit/:id': 'HouseController.edit',
 
   'POST /house/delete/:id': 'HouseController.delete',
 

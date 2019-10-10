@@ -1,7 +1,82 @@
 <!--home.ejs-->
 
+<div class="row">
+
+
+    <!-- The 12 cards -->
+
+    <div id="div01" class="card col-12 col-sm-6 col-lg-6 col-xl-6">
+        <a href=""><%= houses[0].title %></a>
+        <img id="img1" src="http://via.placeholder.com/350x150/dec.png" />
+        <table class="table">
+
+            <tr>
+                <td><%= houses[0].URL %></td>
+                <td><%= houses[0].rent %></td>
+            </tr>
+
+        </table>
+    </div>
+
+    <div id="div02" class="card col-12 col-sm-6 col-lg-6 col-xl-6">
+
+    </div>
+
+    <div id="div03" class="card col-12 col-sm-6 col-lg-6 col-xl-6">
+
+    </div>
+
+    <div id="div04" class="card col-12 col-sm-6 col-lg-6 col-xl-6">
+
+    </div>
+
+    <div id="div05" class="card col-12 col-sm-6 col-lg-6 col-xl-6">
+
+    </div>
+
+    <div id="div06" class="card col-12 col-sm-6 col-lg-6 col-xl-6">
+
+    </div>
+
+    <div id="div07" class="card col-12 col-sm-6 col-lg-6 col-xl-6">
+
+
+    </div>
+
+    <div id="div08" class="card col-12 col-sm-6 col-lg-6 col-xl-6">
+
+    </div>
+
+    <div id="div09" class="card col-12 col-sm-6 col-lg-6 col-xl-6">
+
+    </div>
+
+
+    <div id="div10" class="card col-12 col-sm-6 col-lg-6 col-xl-6">
+
+    </div>
+
+    <div id="div11" class="card col-12 col-sm-6 col-lg-6 col-xl-6">
+
+    </div>
+
+    <div id="div12" class="card col-12 col-sm-6 col-lg-6 col-xl-6">
+
+    </div>
+
+
+
+</div>
+
+
+
+
+
 <table class="table">
-        <% houses.forEach( function(model) { %>
-            <tr><td><%= model.title %></td><td><%= model.estate %></td></tr>
-        <% }); %>
-    </table>
+    <% houses.forEach( function(model) { %>
+    <tr>
+        <td><%= model.title %></td>
+        <td><%= model.estate %></td>
+    </tr>
+    <% }); %>
+</table>

@@ -6,7 +6,21 @@
  */
 
 module.exports = {
-  
+
+    // action - create
+    create: async function (req, res) {
+
+        if (req.method == "GET")
+            return res.view('house/create');
+
+        if (!req.body.House)
+            return res.badRequest("Form-data not received.");
+
+        await House.create(req.body.House);
+
+        return res.ok("Successfully created!");
+    },
+
 
 };
 

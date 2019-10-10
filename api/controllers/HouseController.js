@@ -22,5 +22,14 @@ module.exports = {
     },
 
 
+    // json function
+    json: async function (req, res) {
+
+        var houses = await House.find();
+
+        return res.json(houses);
+    },
+
+
 };
 

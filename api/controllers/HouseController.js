@@ -39,6 +39,14 @@ module.exports = {
 
     },
 
+    // action - home
+    home: async function (req, res) {
+
+        var models = await House.find();
+        return res.view('house/home', { houses: models });
+
+    },
+
 
 
 

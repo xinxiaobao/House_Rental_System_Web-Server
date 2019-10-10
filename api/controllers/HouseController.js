@@ -47,6 +47,28 @@ module.exports = {
 
     },
 
+    // action - view
+    view: async function (req, res) {
+
+        var model = await House.findOne(req.params.id);
+
+        if (!model) return res.notFound();
+
+        return res.view('house/view', { house: model });
+
+    },
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

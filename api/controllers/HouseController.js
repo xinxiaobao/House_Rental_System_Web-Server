@@ -69,7 +69,18 @@ module.exports = {
 
     },
 
-    
+    // action - delete 
+    delete: async function (req, res) {
+
+        if (req.method == "GET") return res.forbidden();
+
+        var models = await House.destroy(req.params.id).fetch();
+
+        if (models.length == 0) return res.notFound();
+
+        return res.ok("House Deleted.");
+
+    },
 
 
 

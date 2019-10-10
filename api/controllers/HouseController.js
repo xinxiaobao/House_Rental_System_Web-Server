@@ -31,5 +31,16 @@ module.exports = {
     },
 
 
+    // action - admin
+    admin: async function (req, res) {
+
+        var models = await House.find();
+        return res.view('house/admin', { houses: models });
+
+    },
+
+
+
+
 };
 

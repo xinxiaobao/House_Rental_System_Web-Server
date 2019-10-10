@@ -17,7 +17,7 @@ module.exports = {
       type: "string"
     },
 
-    team: {
+    estete: {
       type: "string"
     },
 

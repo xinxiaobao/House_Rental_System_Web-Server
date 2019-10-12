@@ -29,9 +29,11 @@ module.exports.routes = {
 
   'GET /house/edit/:id': 'HouseController.edit',
 
+ 
+
   'POST /house/delete/:id': 'HouseController.delete',
 
-
+ 'GET /house/search/:id': 'HouseController.search',
   /***************************************************************************
   *                                                                          *
   * More custom routes here...                                               *

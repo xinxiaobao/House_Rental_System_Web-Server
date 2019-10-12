@@ -82,6 +82,53 @@ module.exports = {
 
     },
 
+    //action search page
+
+    search: async function (req, res) {
+
+        var model = await House.findOne(req.params.id);
+
+        if (!model) return res.notFound();
+
+        return res.view('house/search', { house: model });
+
+    },
+
+
+
+
+
+
+
+
+    // search function
+// search: async function (req, res) {
+
+//     const qEstate = req.query.estate || "";
+//     const qBedroom = parseInt(req.query.bedroom);
+
+//     if (isNaN(qEstate)) {
+
+//         var models = await House.find({
+//             where: { estate: { contains: qEstate} },
+//             sort: 'estate'
+//         });
+
+//     } else {
+
+//         var models = await House.find({
+//             where: { estate: { contains: qEstate }, bedroom: qBedroom },
+//             sort: 'estate'
+//         });
+
+//     }
+
+//     return res.view('house/search', { houses: models });
+// },
+
+
+//
+
 
 
 

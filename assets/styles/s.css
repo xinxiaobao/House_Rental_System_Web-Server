@@ -5,14 +5,35 @@
     width: 210px;
 }
 
+#img2{
+    margin: 20px;
+    overflow: cover;
+    height: 300px;
+    width: 500px;
+}
+
 .home_table {
     margin: 20px;
     border-collapse: collapse;
 }
 
+
 .home_td {
     height: 60px;
     width: 210px;
+    
+    border-style: solid;
+    border-width: thin;
+    border-color: #030000;
+
+    text-align: left;
+    vertical-align: center;
+}
+
+.search_td {
+     
+    height: 60px;
+    width: 500px;
     
     border-style: solid;
     border-width: thin;

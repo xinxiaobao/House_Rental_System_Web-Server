@@ -13,15 +13,15 @@ module.exports = {
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
 
-    title: {
+    ChineseName: {
       type: "string"
     },
 
-    estate: {
+    name: {
       type: "string"
     },
 
-    area: {
+    gross_area: {
       type: "number"
     },
 

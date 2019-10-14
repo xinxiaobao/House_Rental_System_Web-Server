@@ -36,6 +36,7 @@ module.exports = {
 
         var models = await House.find();
         return res.view('house/admin', { houses: models });
+        
 
     },
 
@@ -61,11 +62,11 @@ module.exports = {
     // action - edit
     edit: async function (req, res) {
 
-        var model1 = await House.findOne(req.params.id);
+        var model = await House.findOne(req.params.id);
 
-        if (!model1) return res.notFound();
+        if (!model) return res.notFound();
 
-        return res.view('house/edit', { house: model1 });
+        return res.view('house/edit', { house: model });
 
     },
 
@@ -82,57 +83,33 @@ module.exports = {
 
     },
 
-    //action search page
+    // action - update
+    update: async function (req, res) {
 
-    search: async function (req, res) {
+        if (req.method == "GET") {
 
-        var model = await House.findOne(req.params.id);
+            var model = await House.findOne(req.params.id);
 
-        if (!model) return res.notFound();
+            if (!model) return res.notFound();
 
-        return res.view('house/search', { house: model });
+            return res.view('house/edit/5', { house: model });
 
+        } else {
+
+            if (!req.body.House)
+                return res.badRequest("Form-data not received.");
+
+            var models = await House.update(req.params.id).set({
+                name: req.body.House.name,
+                age: req.body.House.age
+            }).fetch();
+
+            if (models.length == 0) return res.notFound();
+
+            return res.ok("Record updated");
+
+        }
     },
-
-
-
-
-
-
-
-
-    // search function
-// search: async function (req, res) {
-
-//     const qEstate = req.query.estate || "";
-//     const qBedroom = parseInt(req.query.bedroom);
-
-//     if (isNaN(qEstate)) {
-
-//         var models = await House.find({
-//             where: { estate: { contains: qEstate} },
-//             sort: 'estate'
-//         });
-
-//     } else {
-
-//         var models = await House.find({
-//             where: { estate: { contains: qEstate }, bedroom: qBedroom },
-//             sort: 'estate'
-//         });
-
-//     }
-
-//     return res.view('house/search', { houses: models });
-// },
-
-
-//
-
-
-
-
-
 
 
 

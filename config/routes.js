@@ -24,7 +24,7 @@ module.exports.routes = {
 
 
 
-
+  'GET /house/admin/:id': 'HouseController.admin',
   'GET /house/view/:id': 'HouseController.view',
 
   'GET /house/edit/:id': 'HouseController.edit',
@@ -32,6 +32,11 @@ module.exports.routes = {
  
 
   'POST /house/delete/:id': 'HouseController.delete',
+
+  'POST /house/update/:id': 'HouseController.update',
+
+  'GET /house/update/:id': 'HouseController.update',
+
 
  'GET /house/search/:id': 'HouseController.search',
   /***************************************************************************

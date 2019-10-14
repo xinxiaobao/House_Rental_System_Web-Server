@@ -7,7 +7,21 @@
     </tr>
 </table>
 
-<form action="/house/delete/1" method="POST">
+<form action="/house/update/<%= house.id %>" method="POST">
+    <div class="form-group">
+        <label>tltle</label>
+        <p><%= house.title %></p>
+        <input type="text" class="form-control" name="House[title]" value="<%= house.title %>" required>
+    </div>
+    <div class="form-group">
+        <label>URL</label>
+        <p><%= house.URL %></p>
+        <input type="number" class="form-control" name="House[URL]" value="<%= house.URL %>" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<form action="/house/delete/<%= house.id %>" method="POST">
 
     <button type="submit" class="btn btn-danger">delete</button>
 

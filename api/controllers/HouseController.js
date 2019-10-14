@@ -36,7 +36,7 @@ module.exports = {
 
         var models = await House.find();
         return res.view('house/admin', { houses: models });
-        
+
 
     },
 
@@ -110,6 +110,46 @@ module.exports = {
 
         }
     },
+
+
+    //action search page
+
+    search: async function (req, res) {
+
+        var model = await House.findOne(req.params.id);
+
+        if (!model) return res.notFound();
+
+        return res.view('house/search', { house: model });
+
+    },
+
+
+
+    // search function
+    // search: async function (req, res) {
+
+    //     const qRent = req.query.rent || "";
+    //     const qBedrooms = parseInt(req.query.bedrooms);
+
+    //     if (isNaN(qBedrooms)) {
+
+    //         var models = await House.find({
+    //             where: { rent: { contains: qRent } },
+    //             sort: 'rent'
+    //         });
+
+    //     } else {
+
+    //         var models = await Person.find({
+    //             where: { rent: { contains: qRent }, age: qBedrooms },
+    //             sort: 'rent'
+    //         });
+
+    //     }
+
+    //     return res.view('house/search', { houses: models });
+    // },
 
 
 

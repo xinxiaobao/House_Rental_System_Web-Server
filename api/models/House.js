@@ -42,7 +42,7 @@ module.exports = {
     },
 
     box:{
-      type:"string"
+      type:"boolean"
     },
 
 

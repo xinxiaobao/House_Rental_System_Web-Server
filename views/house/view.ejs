@@ -31,15 +31,16 @@
                     <tr>
                         <td class="view_td">Expected Tenants: <%= house.tenants %></td>
                     </tr>
+                    <% var createDate = new Date(house.createdAt); %>
                     <tr>
-                        <td class="view_td">Created: <%= house.createdAt %></td>
+                        <td class="view_td">
+                            createdAt:<%= createDate.getFullYear()%>/<%= createDate.getMonth()%>/<%= createDate.getDate()%>
+                        </td>
                     </tr>
+                    <% var updateDate = new Date(house.updatedAt); %>
                     <tr>
-                        <td class="view_td">Updated: <%= house.updatedAt %></td>
+                        <td class="view_td">Updated: <%= updateDate.getFullYear()%>/<%= updateDate.getMonth()%>/<%= updateDate.getDate()%></td>
                     </tr>
-
-
-
 
 
                 </table>

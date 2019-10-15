@@ -40,6 +40,12 @@ module.exports = {
     tenants: {
       type: "number"
     },
+
+    box:{
+      type:"string"
+    },
+
+
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
     //  ╚═╝╩ ╩╚═╝╚═╝═╩╝╚═╝

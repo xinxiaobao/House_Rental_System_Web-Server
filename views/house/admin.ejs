@@ -1,13 +1,15 @@
 <table class="table">
-
+<% i = 1 %>
     <% houses.forEach( function(model) { %>
    
     <tr>
+        <th><%= i%></th>
         <th><%= model.id %></th>
         <th><%= model.title %></th>
         <th><%= model.name%></th>
         <th><a href="/house/edit/<%= model.id %>">edit</a></th>
     </tr>
+    <% i++ %>
 
     <% }); %>
 

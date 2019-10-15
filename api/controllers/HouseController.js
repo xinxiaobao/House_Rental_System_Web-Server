@@ -45,7 +45,9 @@ module.exports = {
     // action - home
     home: async function (req, res) {
 
-        var models = await House.find();
+        var models = await House.find(req.params.id);
+
+        if (!models) return res.notFound();
         return res.view('house/home', { houses: models });
 
     },

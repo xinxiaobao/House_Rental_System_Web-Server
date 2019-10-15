@@ -9,22 +9,22 @@
         <!-- The 12 cards -->
 
         <div id="div01" class="card col-12 col-sm-12 col-lg-6 col-xl-6">
-            <a href="/house/view/3"><%= houses[1].rent %></a>
+            <a href="/house/view/<%= houses[0].id %>"><%= houses[0].title %></a>
             <div class="row">
 
 
                 <div>
-                    <img id="img1" src="http://via.placeholder.com/50x50/dec.png" />
+                    <img id="img1" src="<%= houses[0].URL %>" />
                 </div>
                 <div>
 
                     <table class="home_table">
 
                         <tr>
-                            <td class="home_td">Estate:<%= houses[1].rent %></td>
+                            <td class="home_td">Estate:<%= houses[0].name %></td>
                         </tr>
                         <tr>
-                            <td class="home_td">Gross Area:<%= houses[1].gross_area %></td>
+                            <td class="home_td">Gross Area:<%= houses[0].gross_area %></td>
                         </tr>
                         <tr>
                             <td class="home_td">Rent: $<%= houses[1].rent %></td>
@@ -35,19 +35,19 @@
         </div>
 
         <div id="div02" class="card col-12 col-sm-12 col-lg-6 col-xl-6">
-            <a href="/house/view/3"><%= houses[1].rent %></a>
+            <a href="/house/view/<%= houses[0].id %>"><%= houses[1].title %></a>
             <div class="row">
 
 
                 <div>
-                    <img id="img1" src="http://via.placeholder.com/50x50/dec.png" />
+                    <img id="img1" src="<%= houses[1].URL %>" />
                 </div>
                 <div>
 
                     <table class="home_table">
 
                         <tr>
-                            <td class="home_td">Estate:<%= houses[1].rent %></td>
+                            <td class="home_td">Estate:<%= houses[1].name %></td>
                         </tr>
                         <tr>
                             <td class="home_td">Gross Area:<%= houses[1].gross_area %></td>
@@ -61,25 +61,25 @@
         </div>
 
         <div id="div03" class="card col-12 col-sm-12 col-lg-6 col-xl-6">
-            <a href="/house/view/3"><%= houses[1].rent %></a>
+            <a href="/house/view/<%= houses[1].id %>"><%= houses[2].title %></a>
             <div class="row">
 
 
                 <div>
-                    <img id="img1" src="http://via.placeholder.com/50x50/dec.png" />
+                    <img id="img1" src="<%= houses[2].URL %>" />
                 </div>
                 <div>
 
                     <table class="home_table">
 
                         <tr>
-                            <td class="home_td">Estate:<%= houses[1].rent %></td>
+                            <td class="home_td">Estate:<%= houses[2].name %></td>
                         </tr>
                         <tr>
-                            <td class="home_td">Gross Area:<%= houses[1].gross_area %></td>
+                            <td class="home_td">Gross Area:<%= houses[2].gross_area %></td>
                         </tr>
                         <tr>
-                            <td class="home_td">Rent: $<%= houses[1].rent %></td>
+                            <td class="home_td">Rent: $<%= houses[2].rent %></td>
                         </tr>
                     </table>
                 </div>
@@ -87,25 +87,25 @@
         </div>
 
         <div id="div04" class="card col-12 col-sm-12 col-lg-6 col-xl-6">
-            <a href="/house/view/3"><%= houses[1].rent %></a>
+            <a href="/house/view/<%= houses[2].id %>"><%= houses[3].title %></a>
             <div class="row">
 
 
                 <div>
-                    <img id="img1" src="http://via.placeholder.com/50x50/dec.png" />
+                    <img id="img1" src="<%= houses[3].URL %>" />
                 </div>
                 <div>
 
                     <table class="home_table">
 
                         <tr>
-                            <td class="home_td">Estate:<%= houses[1].rent %></td>
+                            <td class="home_td">Estate:<%= houses[3].name %></td>
                         </tr>
                         <tr>
-                            <td class="home_td">Gross Area:<%= houses[1].gross_area %></td>
+                            <td class="home_td">Gross Area:<%= houses[3].gross_area %></td>
                         </tr>
                         <tr>
-                            <td class="home_td">Rent: $<%= houses[1].rent %></td>
+                            <td class="home_td">Rent: $<%= houses[3].rent %></td>
                         </tr>
                     </table>
                 </div>
@@ -113,7 +113,6 @@
         </div>
 
         <div id="div05" class="card col-12 col-sm-6 col-lg-6 col-xl-6">
-
         </div>
 
         <div id="div06" class="card col-12 col-sm-6 col-lg-6 col-xl-6">

@@ -24,6 +24,7 @@ module.exports.routes = {
 
 
 
+  'GET /house/home/:id': 'HouseController.home',
   'GET /house/admin/:id': 'HouseController.admin',
   'GET /house/view/:id': 'HouseController.view',
 

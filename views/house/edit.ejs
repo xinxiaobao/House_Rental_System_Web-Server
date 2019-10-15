@@ -1,5 +1,91 @@
 <!-- edit.ejs -->
 
+
+<!--update.ejs-->
+<form action="/house/update/<%= house.id %>" method="POST">
+   
+
+    <div class="row">
+
+
+
+        <!-- The 12 cards -->
+
+        <div id="div01" class="card border-white col-12 col-sm-12 col-lg-12 col-xl-12">
+            <h1>Property Create form</h1>
+        </div>
+
+        <div id="div02" class="card border-white col-12 col-sm-6 col-lg-6 col-xl-6">
+            <label>proper title:</label>
+            <input type="text" class="form-control" name="House[title]" value="<%= house.title %>" required>
+        </div>
+
+        <div id="div03" class="card border-white col-12 col-sm-6 col-lg-6 col-xl-6">
+            <label>Estate:</label>
+            <select onchange="" name="House[name]">
+                <option value="City One Shatin">City One Shatin</option>
+                <option value="City Two Shatin">City Two Shatin</option>
+                <option value="City Three Shatin">City Three Shatin</option>
+            </select>
+        </div>
+
+        <div id="div04" class="card border-white col-12 col-sm-6 col-lg-6 col-xl-6">
+            <label>Gross Area:</label>
+            <input type="number" class="form-control" name="House[gross_area]" value="<%= house.gross_area %>" min="0"
+                max="9999" required>
+        </div>
+
+        <div id="div05" class="card border-white col-12 col-sm-6 col-lg-6 col-xl-6">
+            <label>Rent:</label>
+            <input type="number" class="form-control" name="House[rent]" value="<%= house.rent %>" min="0" max="999999"
+                required>
+        </div>
+
+        <div id="div06" class="card border-white col-12 col-sm-6 col-lg-6 col-xl-6">
+            <label>Image URL:</label>
+            <input type="text" class="form-control" name="House[URL]" value="<%= house.URL %>" required>
+
+        </div>
+
+        <div id="div07" class="card border-white col-12 col-sm-6 col-lg-6 col-xl-6">
+            <label>Bedrooms:</label>
+            <input type="number" class="form-control" name="House[bedrooms]" value="<%= house.bedrooms %>" min="0" max="9"
+                required>
+
+        </div>
+
+        <div id="div08" class="card border-white col-12 col-sm-6 col-lg-6 col-xl-6">
+            <label>Expected Tenants:</label>
+            <input type="number" class="form-control" name=House[tenants] value="<%= house.tenants %>" min="0" max="9"
+                required>
+        </div>
+
+        <div id="div09" class="card border-white col-12 col-sm-6 col-lg-6 col-xl-6">
+            <div class="form-check mb-3">
+                <input class="form-check-input" name="box" type="checkbox" value="dummy">
+                <label class="form-check-label">Highlighted Property</label>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+            </div>
+        </div>
+
+        <div id="div10" class="card border-white col-12 col-sm-6 col-lg-6 col-xl-6">
+
+        </div>
+
+        <div id="div11" class="card border-white col-12 col-sm-6 col-lg-6 col-xl-6">
+
+        </div>
+
+        <div id="div12" class="card border-light col-12 col-sm-6 col-lg-6 col-xl-6">
+
+        </div>
+    </div>
+
+
+
+
 <table class="table">
     <tr>
         <td><%= house.title %></td>
@@ -19,79 +105,8 @@
         <input type="number" class="form-control" name="URL" value="<%= house.URL %>" required>
     </div> -->
 
-    <div class="row">
 
 
-
-            <!-- The 12 cards -->
-
-            <div id="div01" class="card border-white col-12 col-sm-12 col-lg-12 col-xl-12">
-                <h1>Property Create form</h1>
-            </div>
-
-            <div id="div02" class="card border-white col-12 col-sm-6 col-lg-6 col-xl-6">
-                <label>proper title:</label>
-                <input type="text" class="form-control" name="title" value="<%= house.title %>" required>
-            </div>
-
-            <div id="div03" class="card border-white col-12 col-sm-6 col-lg-6 col-xl-6">
-                <label>Estate:</label>
-                <select onchange="" name="House[name]">
-                    <option value="City One Shatin">City One Shatin</option>
-                    <option value="City Two Shatin">City Two Shatin</option>
-                    <option value="City Three Shatin">City Three Shatin</option>
-                </select>
-            </div>
-
-            <div id="div04" class="card border-white col-12 col-sm-6 col-lg-6 col-xl-6">
-                <label>Gross Area:</label>
-                <input type="number" class="form-control" name="gross_area" value="<%= house.gross_area %>" min="0" max="9999" required>
-            </div>
-
-            <div id="div05" class="card border-white col-12 col-sm-6 col-lg-6 col-xl-6">
-                <label>Rent:</label>
-                <input type="number" class="form-control" name="rent" value="<%= house.rent %>" min="0" max="999999" required>
-            </div>
-
-            <div id="div06" class="card border-white col-12 col-sm-6 col-lg-6 col-xl-6">
-                <label>Image URL:</label>
-                <input type="text" class="form-control" name="URL" value="<%= house.URL %>" required>
-   
-            </div>
-
-            <div id="div07" class="card border-white col-12 col-sm-6 col-lg-6 col-xl-6">
-                <label>Bedrooms:</label>
-                <input type="number" class="form-control" name="bedrooms" value="<%= house.bedrooms %>" min="0" max="9" required>
-
-            </div>
-
-            <div id="div08" class="card border-white col-12 col-sm-6 col-lg-6 col-xl-6">
-                <label>Expected Tenants:</label>
-                <input type="number" class="form-control" name=tenants value="<%= house.tenants %>" min="0" max="9" required>
-            </div>
-
-            <div id="div09" class="card border-white col-12 col-sm-6 col-lg-6 col-xl-6">
-                <div class="form-check mb-3" >
-                    <input class="form-check-input" name="box" type="checkbox" value="dummy">
-                    <label class="form-check-label">Highlighted Property</label>
-                </div>
-                <div>
-                    <button type="submit" class="btn btn-primary btn-sm">Submit</button>
-                </div>
-            </div>
-
-            <div id="div10" class="card border-white col-12 col-sm-6 col-lg-6 col-xl-6">
-
-            </div>
-
-            <div id="div11" class="card border-white col-12 col-sm-6 col-lg-6 col-xl-6">
-
-            </div>
-
-            <div id="div12" class="card border-light col-12 col-sm-6 col-lg-6 col-xl-6">
-
-            </div>
-        </div>
 
 
 
@@ -106,6 +121,3 @@
     <button type="submit" class="btn btn-danger">delete</button>
 
 </form>
-
-
- 

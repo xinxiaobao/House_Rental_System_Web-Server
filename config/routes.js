@@ -38,6 +38,7 @@ module.exports.routes = {
   'GET /house/update/:id': 'HouseController.update',
 
 
+
  'GET /house/search/:id': 'HouseController.search',
   /***************************************************************************
   *                                                                          *

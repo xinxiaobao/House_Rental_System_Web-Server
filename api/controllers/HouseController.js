@@ -83,34 +83,39 @@ module.exports = {
 
     },
 
+
+
+
     // action - update
-    update: async function (req, res) {
+update: async function (req, res) {
 
-        if (req.method == "GET") {
+    if (req.method == "GET") {
 
-            var model = await House.findOne(req.params.id);
+        var model = await House.findOne(req.params.id);
 
-            if (!model) return res.notFound();
+        if (!model) return res.notFound();
 
-            return res.view('house/edit/5', { house: model });
+        return res.view('house/update', { house: model });
 
-        } else {
+    } else {
 
-            if (!req.body.House)
-                return res.badRequest("Form-data not received.");
+        if (!req.body.House)
+            return res.badRequest("Form-data not received.");
 
-            var models = await House.update(req.params.id).set({
-                name: req.body.House.name,
-                age: req.body.House.age
-            }).fetch();
+        var models = await House.update(req.params.id).set({
+            title: req.body.House.title,
+            rent: req.body.House.rent,
+        }).fetch();
 
-            if (models.length == 0) return res.notFound();
+        if (models.length == 0) return res.notFound();
 
-            return res.ok("Record updated");
+        return res.ok("Record updated");
 
-        }
-    },
+    }
+},
 
+
+    
 
     //action search page
 

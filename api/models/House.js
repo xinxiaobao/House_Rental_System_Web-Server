@@ -41,10 +41,6 @@ module.exports = {
       type: "number"
     },
 
-    box:{
-      type:"boolean"
-    },
-
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗

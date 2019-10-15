@@ -2,27 +2,46 @@
 <div class="container">
 
     <div class="card">
-
+        <h1><%= house.title %></h1>
 
         <div class="row">
 
 
+
+
             <div>
-                <img id="img1" src="http://via.placeholder.com/50x50/dec.png" />
+                <img id="view_img" src="<%= house.URL %>" />
             </div>
             <div>
 
-                <table class="home_table">
+                <table class="view_table">
 
                     <tr>
-                        <td class="home_td">Estate:<%= house.titleL %></td>
+                        <td class="view_td">Estate:<%= house.name %></td>
                     </tr>
                     <tr>
-                        <td class="home_td">Gross Area:<%= house.title %></td>
+                        <td class="view_td">Gross Area:<%= house.gross_area %></td>
                     </tr>
                     <tr>
-                        <td class="home_td">Rent: $<%= house.title %></td>
+                        <td class="view_td">Rent: $<%= house.rent %></td>
                     </tr>
+                    <tr>
+                        <td class="view_td">Bedrooms: <%= house.bedrooms %></td>
+                    </tr>
+                    <tr>
+                        <td class="view_td">Expected Tenants: <%= house.tenants %></td>
+                    </tr>
+                    <tr>
+                        <td class="view_td">Created: <%= house.createdAt %></td>
+                    </tr>
+                    <tr>
+                        <td class="view_td">Updated: <%= house.updatedAt %></td>
+                    </tr>
+
+
+
+
+
                 </table>
             </div>
         </div>
@@ -31,9 +50,3 @@
 
 
 </div>
-<table class="table">
-    <tr>
-        <td><%= house.title %></td>
-        <td><%= house.URL %></td>
-    </tr>
-</table>

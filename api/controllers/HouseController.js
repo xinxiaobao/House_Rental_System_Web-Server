@@ -104,7 +104,19 @@ update: async function (req, res) {
 
         var models = await House.update(req.params.id).set({
             title: req.body.House.title,
+            name: req.body.House.name,
+            gross_area: req.body.House.gross_area,
             rent: req.body.House.rent,
+            URL: req.body.House.URL,
+            bedrooms: req.body.House.bedrooms,
+            tenants: req.body.House.tenants,
+           
+
+
+
+
+
+
         }).fetch();
 
         if (models.length == 0) return res.notFound();

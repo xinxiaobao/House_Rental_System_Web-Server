@@ -9,3 +9,21 @@
     </tr>
     <% }); %>
 </table>
+
+<form action="/house/search1" method="POST">
+
+  
+
+    <div id="div01" class="card border-white col-12 col-sm-6 col-lg-6 col-xl-6">
+        <label>name:</label>
+        <input type="text" class="form-control" name="House[name]" value="">
+    </div>
+
+    <div id="div01" class="card border-white col-12 col-sm-6 col-lg-6 col-xl-6">
+        <label>rent:</label>
+        <input type="number" class="form-control" name="House[rent]" value="">
+    </div>
+
+    <button type="submit" class="btn btn-danger">Search</button>
+
+</form>

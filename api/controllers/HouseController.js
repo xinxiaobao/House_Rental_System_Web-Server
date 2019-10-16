@@ -158,8 +158,8 @@ module.exports = {
     // search1 function
     search1: async function (req, res) {
 
-        const qName = req.query.name || "";
-        const qRent = parseInt(req.query.rent);
+        const qName = req.body.House.name || "";
+        const qRent = parseInt(req.body.House.rent);
 
         if (isNaN(qRent)) {
 

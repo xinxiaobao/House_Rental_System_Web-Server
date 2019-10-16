@@ -1,0 +1,11 @@
+<!--index.ejs-->
+<table class="table">
+    <% houses.forEach( function(model) { %>
+    <tr>
+        <td><%= model.name %></td>
+        <td><%= model.rent %></td>
+        <td><%= model.title %></td>
+        <td><%= model.bedrooms %></td>
+    </tr>
+    <% }); %>
+</table>

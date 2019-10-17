@@ -137,7 +137,7 @@ module.exports = {
 
         const qPage = Math.max(req.query.page - 1, 0) || 0;
         const numOfItemsPerPage = 2;
-     
+
 
         if (isNaN()) {
             var models = await House.find({
@@ -149,56 +149,56 @@ module.exports = {
 
 
             return res.view('house/search', { houses: models, count: numOfPage });
-        }else{
-
-            const qName = req.body.House.name || "";
-        const qRent1 = parseInt(req.body.House.rent1) || 0;
-        const qRent2 = parseInt(req.body.House.rent2) || 9999;
-        const qGross_area1 = parseInt(req.body.House.gross_area1) || 0;
-        const qGross_area2 = parseInt(req.body.House.gross_area2) || 9999;
-        const qBedrooms = parseInt(req.body.House.bedrooms);
-        const qPage = Math.max(req.query.page - 1, 0) || 0;
-        const numOfItemsPerPage = 2;
-
-        var models = await House.find({
-            limit: numOfItemsPerPage,
-            skip: numOfItemsPerPage * qPage
-        });
-
-        var numOfPage = Math.ceil(await House.count() / numOfItemsPerPage);
-
-
-        if (isNaN(qRent1 || qRent2 || qGross_area1 || qGross_area2 || qBedrooms)) {
-
-            var models = await House.find({
-                where: { name: { contains: qName } },
-                sort: 'name'
-            });
-
-        } else if (isNaN(qRent1 || qRent2 || qGross_area1 || qGross_area2)) {
-
-            var models = await House.find({
-                where: { name: { contains: qName }, bedrooms: qBedrooms },
-                sort: 'name'
-            });
-
-        } else if (isNaN(qBedrooms)) {
-
-            var models = await House.find({
-                where: { name: { contains: qName }, rent: { '>=': qRent1, '<=': qRent2 }, gross_area: { '>=': qGross_area1, '<=': qGross_area2 } },
-                sort: 'name'
-            });
-
         } else {
 
+            const qName = req.body.House.name || "";
+            const qRent1 = parseInt(req.body.House.rent1) || 0;
+            const qRent2 = parseInt(req.body.House.rent2) || 9999;
+            const qGross_area1 = parseInt(req.body.House.gross_area1) || 0;
+            const qGross_area2 = parseInt(req.body.House.gross_area2) || 9999;
+            const qBedrooms = parseInt(req.body.House.bedrooms);
+            const qPage = Math.max(req.query.page - 1, 0) || 0;
+            const numOfItemsPerPage = 2;
+
             var models = await House.find({
-                where: { name: { contains: qName }, rent: { '>=': qRent1, '<=': qRent2 }, gross_area: { '>=': qGross_area1, '<=': qGross_area2 }, bedrooms: qBedrooms },
-                sort: 'name'
+                limit: numOfItemsPerPage,
+                skip: numOfItemsPerPage * qPage
             });
 
-        }
-        return res.view('house/search', { houses: models, count: numOfPage });
-    
+            var numOfPage = Math.ceil(await House.count() / numOfItemsPerPage);
+
+
+            if (isNaN(qRent1 || qRent2 || qGross_area1 || qGross_area2 || qBedrooms)) {
+
+                var models = await House.find({
+                    where: { name: { contains: qName } },
+                    sort: 'name'
+                });
+
+            } else if (isNaN(qRent1 || qRent2 || qGross_area1 || qGross_area2)) {
+
+                var models = await House.find({
+                    where: { name: { contains: qName }, bedrooms: qBedrooms },
+                    sort: 'name'
+                });
+
+            } else if (isNaN(qBedrooms)) {
+
+                var models = await House.find({
+                    where: { name: { contains: qName }, rent: { '>=': qRent1, '<=': qRent2 }, gross_area: { '>=': qGross_area1, '<=': qGross_area2 } },
+                    sort: 'name'
+                });
+
+            } else {
+
+                var models = await House.find({
+                    where: { name: { contains: qName }, rent: { '>=': qRent1, '<=': qRent2 }, gross_area: { '>=': qGross_area1, '<=': qGross_area2 }, bedrooms: qBedrooms },
+                    sort: 'name'
+                });
+
+            }
+            return res.view('house/search', { houses: models, count: numOfPage });
+
 
 
         }

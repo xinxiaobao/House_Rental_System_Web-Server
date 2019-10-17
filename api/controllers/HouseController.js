@@ -45,7 +45,10 @@ module.exports = {
     // action - home
     home: async function (req, res) {
 
-        var models = await House.find(req.params.id);
+        var models = await House.find({
+            sort: 'createdAt desc',
+            limit: 4
+        });
 
         if (!models) return res.notFound();
         return res.view('house/home', { houses: models });
@@ -116,11 +119,6 @@ module.exports = {
                 tenants: req.body.House.tenants,
 
 
-
-
-
-
-
             }).fetch();
 
             if (models.length == 0) return res.notFound();
@@ -135,15 +133,31 @@ module.exports = {
 
     //action search page
 
-    search: async function (req, res) {
+    search: async function (req, res)  {
 
-        var model = await House.findOne(req.params.id);
 
-        if (!model) return res.notFound();
+        const qPage = Math.max(req.query.page - 1, 0) || 0;
 
-        return res.view('house/search', { house: model });
+        const numOfItemsPerPage = 2;
+
+        var models = await House.find({
+            limit: numOfItemsPerPage,
+            skip: numOfItemsPerPage * qPage
+        }) || House.find();
+
+        var numOfPage = Math.ceil(await House.count() / numOfItemsPerPage);
+        
+
+        return res.view('house/search', { houses: models, count: numOfPage });
+
+
 
     },
+
+
+
+       
+
 
 
     // action - index
@@ -161,7 +175,7 @@ module.exports = {
 
         var numOfPage = Math.ceil(await House.count() / numOfItemsPerPage);
 
-        return res.view('house/index', { houses: models, count: numOfPage  });
+        return res.view('house/index', { houses: models, count: numOfPage });
 
     },
 
@@ -170,13 +184,28 @@ module.exports = {
     search1: async function (req, res) {
 
         const qName = req.body.House.name || "";
-        const qRent1 = parseInt(req.body.House.rent1);
-        const qRent2 = parseInt(req.body.House.rent2);
+        const qRent1 = parseInt(req.body.House.rent1) || 0;
+        const qRent2 = parseInt(req.body.House.rent2) || 9999;
 
-        const qGross_area1 = parseInt(req.body.House.gross_area1);
-        const qGross_area2 = parseInt(req.body.House.gross_area2);
+        const qGross_area1 = parseInt(req.body.House.gross_area1) || 0;
+        const qGross_area2 = parseInt(req.body.House.gross_area2) || 9999;
 
         const qBedrooms = parseInt(req.body.House.bedrooms);
+
+        const qPage = Math.max(req.query.page - 1, 0) || 0;
+
+        const numOfItemsPerPage = 2;
+
+
+        var models = await House.find({
+            limit: numOfItemsPerPage,
+            skip: numOfItemsPerPage * qPage
+        });
+
+        var numOfPage = Math.ceil(await House.count() / numOfItemsPerPage);
+
+        
+
 
 
 
@@ -212,13 +241,10 @@ module.exports = {
 
         }
 
-        return res.view('house/index', { houses: models });
+
+       
+        return res.view('house/index', { houses: models, count: numOfPage });
     },
-
-
-
-
-
 
 
 };

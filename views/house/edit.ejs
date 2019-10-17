@@ -3,7 +3,7 @@
 
 <!--update.ejs-->
 <form action="/house/update/<%= house.id %>" method="POST">
-   
+
 
     <div class="row">
 
@@ -24,8 +24,9 @@
             <label>Estate:</label>
             <select onchange="" name="House[name]">
                 <option value="City One Shatin">City One Shatin</option>
-                <option value="City Two Shatin">City Two Shatin</option>
-                <option value="City Three Shatin">City Three Shatin</option>
+                <option value="Tai Wai">Tai Wai</option>
+                <option value="Hung Hom">Hung Hom</option>
+                <option value="Siu Sai Wan">Siu Sai Wan</option>
             </select>
         </div>
 
@@ -49,8 +50,8 @@
 
         <div id="div07" class="card border-white col-12 col-sm-6 col-lg-6 col-xl-6">
             <label>Bedrooms:</label>
-            <input type="number" class="form-control" name="House[bedrooms]" value="<%= house.bedrooms %>" min="0" max="9"
-                required>
+            <input type="number" class="form-control" name="House[bedrooms]" value="<%= house.bedrooms %>" min="0"
+                max="9" required>
 
         </div>
 
@@ -84,8 +85,8 @@
     </div>
 
 
-<form action="/house/delete/<%= house.id %>" method="POST">
+    <form action="/house/delete/<%= house.id %>" method="POST">
 
-    <button type="submit" class="btn btn-danger">delete</button>
+        <button type="submit" class="btn btn-danger">delete</button>
 
-</form>
+    </form>

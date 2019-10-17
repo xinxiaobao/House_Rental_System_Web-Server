@@ -159,19 +159,41 @@ module.exports = {
     search1: async function (req, res) {
 
         const qName = req.body.House.name || "";
-        const qRent = parseInt(req.body.House.rent);
+        const qRent1 = parseInt(req.body.House.rent1);
+        const qRent2 = parseInt(req.body.House.rent2);
 
-        if (isNaN(qRent)) {
+        const qGross_area1 = parseInt(req.body.House.gross_area1);
+        const qGross_area2 = parseInt(req.body.House.gross_area2);
+
+        const qBedrooms = parseInt(req.body.House.bedrooms);
+        
+
+
+        if (isNaN(qRent1 || qRent2 || qGross_area1|| qGross_area2 || qBedrooms)) {
 
             var models = await House.find({
                 where: { name: { contains: qName } },
                 sort: 'name'
             });
 
-        } else {
+        } else if(isNaN(qRent1 || qRent2 || qGross_area1|| qGross_area2)){
 
             var models = await House.find({
-                where: { name: { contains: qName }, rent: qRent },
+                where: { name: { contains: qName }, bedrooms:qBedrooms },
+                sort: 'name'
+            });
+
+        }else if(isNaN(qBedrooms)){
+
+            var models = await House.find({
+                where: { name: { contains: qName }, rent: {'>=':qRent1,'<=': qRent2},gross_area: {'>=':qGross_area1,'<=': qGross_area2} },
+                sort: 'name'
+            });
+
+        }  else{
+
+            var models = await House.find({
+                where: { name: { contains: qName }, rent: {'>=':qRent1,'<=': qRent2}, gross_area: {'>=':qGross_area1,'<=': qGross_area2}, bedrooms:qBedrooms },
                 sort: 'name'
             });
 

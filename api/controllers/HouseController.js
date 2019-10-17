@@ -149,8 +149,19 @@ module.exports = {
     // action - index
     index: async function (req, res) {
 
-        var models = await House.find();
-        return res.view('house/index', { houses: models });
+
+        const qPage = Math.max(req.query.page - 1, 0) || 0;
+
+        const numOfItemsPerPage = 2;
+
+        var models = await House.find({
+            limit: numOfItemsPerPage,
+            skip: numOfItemsPerPage * qPage
+        });
+
+        var numOfPage = Math.ceil(await House.count() / numOfItemsPerPage);
+
+        return res.view('house/index', { houses: models, count: numOfPage  });
 
     },
 
@@ -166,34 +177,36 @@ module.exports = {
         const qGross_area2 = parseInt(req.body.House.gross_area2);
 
         const qBedrooms = parseInt(req.body.House.bedrooms);
-        
 
 
-        if (isNaN(qRent1 || qRent2 || qGross_area1|| qGross_area2 || qBedrooms)) {
+
+
+
+        if (isNaN(qRent1 || qRent2 || qGross_area1 || qGross_area2 || qBedrooms)) {
 
             var models = await House.find({
                 where: { name: { contains: qName } },
                 sort: 'name'
             });
 
-        } else if(isNaN(qRent1 || qRent2 || qGross_area1|| qGross_area2)){
+        } else if (isNaN(qRent1 || qRent2 || qGross_area1 || qGross_area2)) {
 
             var models = await House.find({
-                where: { name: { contains: qName }, bedrooms:qBedrooms },
+                where: { name: { contains: qName }, bedrooms: qBedrooms },
                 sort: 'name'
             });
 
-        }else if(isNaN(qBedrooms)){
+        } else if (isNaN(qBedrooms)) {
 
             var models = await House.find({
-                where: { name: { contains: qName }, rent: {'>=':qRent1,'<=': qRent2},gross_area: {'>=':qGross_area1,'<=': qGross_area2} },
+                where: { name: { contains: qName }, rent: { '>=': qRent1, '<=': qRent2 }, gross_area: { '>=': qGross_area1, '<=': qGross_area2 } },
                 sort: 'name'
             });
 
-        }  else{
+        } else {
 
             var models = await House.find({
-                where: { name: { contains: qName }, rent: {'>=':qRent1,'<=': qRent2}, gross_area: {'>=':qGross_area1,'<=': qGross_area2}, bedrooms:qBedrooms },
+                where: { name: { contains: qName }, rent: { '>=': qRent1, '<=': qRent2 }, gross_area: { '>=': qGross_area1, '<=': qGross_area2 }, bedrooms: qBedrooms },
                 sort: 'name'
             });
 

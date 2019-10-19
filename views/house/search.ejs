@@ -38,21 +38,22 @@
 
         <div style="padding: 20px;">
             <% const current = parseInt(req.query.page) || 1; %>
-            <% const qNow = parseInt(req.query) || ""; %>
+
             <nav aria-label="Page navigation example">
                 <ul class="pagination">
                     <li class="page-item">
-                        <a class="page-link" href="/house/search?<% qNow %>/?page=<%= Math.max(current-1, 1) %>">Previous</a>
+                        <a class="page-link" href="/house/search/?page=<%= Math.max(current-1, 1) %>">Previous</a>
                     </li>
 
                     <% for (i = 1; i <= count; i++) { %>
                     <li class="page-item">
-                        <a class="page-link" href="/house/search?<% qNow %>/?page=<%= i %>"><%= i %></a>
+                        <a class="page-link" href="/house/search/?page=<%= i %>"><%= i %></a>
                     </li>
                     <% } %>
 
                     <li class="page-item">
-                        <a class="page-link" href="/house/search?<% qNow %>/?page=<%= Math.min(current+1, count) %>">Next</a>
+                        <a class="page-link"
+                            href="/house/search/?name=City+One+Shatin/?page=<%= Math.min(current+1, count) %>">Next</a>
                     </li>
                 </ul>
             </nav>
@@ -64,6 +65,7 @@
 
 
             <div class="row" style="padding:0px 10px;">
+
                 <div>
                     <label>Estate:</label>
                 </div>
@@ -113,7 +115,7 @@
 
 
 
-            <button type="submit" class="btn btn-danger">Search</button>
+            <button type="submit" class="btn btn-primary">Search</button>
 
         </form>
     </div>

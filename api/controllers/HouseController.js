@@ -147,33 +147,40 @@ module.exports = {
         const numOfItemsPerPage = 2;
 
 
-
         if (isNaN(qRent1 || qRent2 || qGross_area1 || qGross_area2 || qBedrooms)) {
 
             var models = await House.find({
                 where: { name: { contains: qName } },
-                sort: 'name'
+                sort: 'name',
+                limit: numOfItemsPerPage,
+                skip: numOfItemsPerPage * qPage
             });
 
         } else if (isNaN(qRent1 || qRent2 || qGross_area1 || qGross_area2)) {
 
             var models = await House.find({
                 where: { name: { contains: qName }, bedrooms: qBedrooms },
-                sort: 'name'
+                sort: 'name',
+                limit: numOfItemsPerPage,
+                skip: numOfItemsPerPage * qPage
             });
 
         } else if (isNaN(qBedrooms)) {
 
             var models = await House.find({
                 where: { name: { contains: qName }, rent: { '>=': qRent1 || 0, '<=': qRent2 || 999999 }, gross_area: { '>=': qGross_area1 || 0, '<=': qGross_area2  || 9999}},
-                sort: 'name'
+                sort: 'name',
+                limit: numOfItemsPerPage,
+                skip: numOfItemsPerPage * qPage
             });
 
         } else {
 
             var models = await House.find({
                 where: { name: { contains: qName }, rent: { '>=': qRent1 || 0, '<=': qRent2 || 999999 }, gross_area: { '>=': qGross_area1 || 0, '<=': qGross_area2  || 9999}, bedrooms: qBedrooms },
-                sort: 'name'
+                sort: 'name',
+                limit: numOfItemsPerPage,
+                skip: numOfItemsPerPage * qPage
             });
 
         }

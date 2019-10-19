@@ -142,18 +142,12 @@ module.exports = {
         const qGross_area2 = parseInt(req.query.gross_area2);
         const qBedrooms = parseInt(req.query.bedrooms);
 
-
-        const qPage = Math.max(req.query.page - 1, 0) || 0;
-        const numOfItemsPerPage = 2;
-
-
         if (isNaN(qRent1 || qRent2 || qGross_area1 || qGross_area2 || qBedrooms)) {
 
             var models = await House.find({
                 where: { name: { contains: qName } },
                 sort: 'name',
-                limit: numOfItemsPerPage,
-                skip: numOfItemsPerPage * qPage
+
             });
 
         } else if (isNaN(qRent1 || qRent2 || qGross_area1 || qGross_area2)) {
@@ -161,35 +155,35 @@ module.exports = {
             var models = await House.find({
                 where: { name: { contains: qName }, bedrooms: qBedrooms },
                 sort: 'name',
-                limit: numOfItemsPerPage,
-                skip: numOfItemsPerPage * qPage
+
             });
 
         } else if (isNaN(qBedrooms)) {
 
             var models = await House.find({
-                where: { name: { contains: qName }, rent: { '>=': qRent1 || 0, '<=': qRent2 || 999999 }, gross_area: { '>=': qGross_area1 || 0, '<=': qGross_area2  || 9999}},
+                where: { name: { contains: qName }, rent: { '>=': qRent1 || 0, '<=': qRent2 || 999999 }, gross_area: { '>=': qGross_area1 || 0, '<=': qGross_area2 || 9999 } },
                 sort: 'name',
-                limit: numOfItemsPerPage,
-                skip: numOfItemsPerPage * qPage
+
             });
 
         } else {
 
             var models = await House.find({
-                where: { name: { contains: qName }, rent: { '>=': qRent1 || 0, '<=': qRent2 || 999999 }, gross_area: { '>=': qGross_area1 || 0, '<=': qGross_area2  || 9999}, bedrooms: qBedrooms },
+                where: { name: { contains: qName }, rent: { '>=': qRent1 || 0, '<=': qRent2 || 999999 }, gross_area: { '>=': qGross_area1 || 0, '<=': qGross_area2 || 9999 }, bedrooms: qBedrooms },
                 sort: 'name',
-                limit: numOfItemsPerPage,
-                skip: numOfItemsPerPage * qPage
-            });
 
+            });
         }
 
+        
 
-        var numOfPage = Math.ceil(await House.count() / numOfItemsPerPage);
+       
 
 
-        return res.view('house/search', { houses: models, count: numOfPage });
+
+
+
+        return res.view('house/search', { houses: models});
 
 
 

@@ -36,28 +36,8 @@
     </div>
     <div class="card col-12 col-sm-4 col-lg-4 col-xl-4">
 
-        <div style="padding: 20px;">
-            <% const current = parseInt(req.query.page) || 1; %>
 
-            <nav aria-label="Page navigation example">
-                <ul class="pagination">
-                    <li class="page-item">
-                        <a class="page-link" href="/house/search/?page=<%= Math.max(current-1, 1) %>">Previous</a>
-                    </li>
 
-                    <% for (i = 1; i <= count; i++) { %>
-                    <li class="page-item">
-                        <a class="page-link" href="/house/search/?page=<%= i %>"><%= i %></a>
-                    </li>
-                    <% } %>
-
-                    <li class="page-item">
-                        <a class="page-link"
-                            href="/house/search/?name=City+One+Shatin/?page=<%= Math.min(current+1, count) %>">Next</a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
 
         <h1>Property Search</h1>
 

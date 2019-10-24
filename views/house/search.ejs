@@ -39,6 +39,28 @@
 
 
 
+            <% const current = parseInt(req.query.page) || 1; %>
+
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li class="page-item">
+                        <a class="page-link" href="/house/search/?<%= params %>page=<%= Math.max(current-1, 1) %>">Previous</a>
+                    </li>
+            
+                    <% for (i = 1; i <= count; i++) { %>
+                        <li class="page-item">
+                            <a class="page-link" href="/house/search/?<%= params %>page=<%= i %>"><%= i %></a>
+                        </li>
+                    <% } %>
+            
+                    <li class="page-item">
+                        <a class="page-link" href="/house/search/?<%= params %>page=<%= Math.min(current+1, count) %>">Next</a>
+                    </li>
+                </ul>
+            </nav>
+            
+
+
         <h1>Property Search</h1>
 
         <form action="/house/search?" method="GET">

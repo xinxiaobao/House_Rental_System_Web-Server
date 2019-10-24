@@ -138,14 +138,12 @@ module.exports = {
 
 
 
-
-        //  zhy
         const qPage = Math.max(req.query.page - 1, 0) || 0;
 
         const numOfItemsPerPage = 2;
 
         var params = ""
-        
+
 
         if (req.method == "GET") {
 
@@ -157,13 +155,10 @@ module.exports = {
             const qBedrooms = parseInt(req.query.bedrooms);
 
 
-
             if (!qRent1 && !qRent2 && !qGross_area1 && !qGross_area2 && !qBedrooms && !qName) {
-                
+
                 var numOfPage = Math.ceil(await House.count() / numOfItemsPerPage);
-                
-                
-                
+
                 var models = await House.find({
 
                     limit: numOfItemsPerPage,
@@ -172,10 +167,10 @@ module.exports = {
 
                 });
 
-              
-            } else if (isNaN(qRent1 || qRent2 || qGross_area1 || qGross_area2|| qBedrooms)) {
 
-                params = req.url.split("?")[1].split("&page")[0]+"&";
+            } else if (isNaN(qRent1 || qRent2 || qGross_area1 || qGross_area2 || qBedrooms)) {
+
+                params = req.url.split("?")[1].split("&page")[0] + "&";
 
                 var numOfPage = Math.ceil(await House.count({ name: { contains: qName } }) / numOfItemsPerPage);
 
@@ -187,9 +182,31 @@ module.exports = {
 
                 });
 
-            } else if (isNaN(qBedrooms)) {
+            } 
+            
+            // else if (qBedrooms) {
+
+            //     params = req.url.split("?")[1].split("&page")[0] + "&";
+
+            //     var numOfPage = Math.ceil(await House.count({ name: { contains: qName }, bedrooms: qBedrooms }) / numOfItemsPerPage);
+
+            //     var models = await House.find({
+            //         where: { name: { contains: qName }, bedrooms: qBedrooms },
+            //         sort: 'name',
+            //         limit: numOfItemsPerPage,
+            //         skip: numOfItemsPerPage * qPage
+
+            //     });
+
+            // } 
+            
+            else if(isNaN(qBedrooms)){
 
 
+
+                params = req.url.split("?")[1].split("&page")[0] + "&";
+
+                var numOfPage = Math.ceil(await House.count({ name: { contains: qName }, rent: { '>=': qRent1 || 0, '<=': qRent2 || 999999 }, gross_area: { '>=': qGross_area1 || 0, '<=': qGross_area2 || 9999 } }) / numOfItemsPerPage);
 
                 var models = await House.find({
                     where: { name: { contains: qName }, rent: { '>=': qRent1 || 0, '<=': qRent2 || 999999 }, gross_area: { '>=': qGross_area1 || 0, '<=': qGross_area2 || 9999 } },
@@ -199,15 +216,22 @@ module.exports = {
 
                 });
 
-            } else {
+
+            }else{
+
+                params = req.url.split("?")[1].split("&page")[0] + "&";
+
+                var numOfPage = Math.ceil(await House.count({ name: { contains: qName }, bedrooms: qBedrooms, rent: { '>=': qRent1 || 0, '<=': qRent2 || 999999 }, gross_area: { '>=': qGross_area1 || 0, '<=': qGross_area2 || 9999 } }) / numOfItemsPerPage);
 
                 var models = await House.find({
-                    where: { name: { contains: qName }, rent: { '>=': qRent1 || 0, '<=': qRent2 || 999999 }, gross_area: { '>=': qGross_area1 || 0, '<=': qGross_area2 || 9999 }, bedrooms: qBedrooms },
+                    where: { name: { contains: qName }, bedrooms: qBedrooms, rent: { '>=': qRent1 || 0, '<=': qRent2 || 999999 }, gross_area: { '>=': qGross_area1 || 0, '<=': qGross_area2 || 9999 }},
                     sort: 'name',
                     limit: numOfItemsPerPage,
                     skip: numOfItemsPerPage * qPage
 
                 });
+
+
             }
 
         }

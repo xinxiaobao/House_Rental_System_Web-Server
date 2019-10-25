@@ -40,28 +40,30 @@
 
 
 
-            <% const current = parseInt(req.query.page) || 1; %>
-
+        <% const current = parseInt(req.query.page) || 1; %>
+        <div style="margin:20px 0px;">
             <nav aria-label="Page navigation example">
                 <ul class="pagination">
                     <li class="page-item">
-                        <a class="page-link" href="/house/search/?<%= params %>page=<%= Math.max(current-1, 1) %>">Previous</a>
+                        <a class="page-link"
+                            href="/house/search/?<%= params %>page=<%= Math.max(current-1, 1) %>">Previous</a>
                     </li>
-            
+
                     <% for (i = 1; i <= count; i++) { %>
-                        <li class="page-item">
-                            <a class="page-link" href="/house/search/?<%= params %>page=<%= i %>"><%= i %></a>
-                        </li>
-                    <% } %>
-            
                     <li class="page-item">
-                        <a class="page-link" href="/house/search/?<%= params %>page=<%= Math.min(current+1, count) %>">Next</a>
+                        <a class="page-link" href="/house/search/?<%= params %>page=<%= i %>"><%= i %></a>
+                    </li>
+                    <% } %>
+
+                    <li class="page-item">
+                        <a class="page-link"
+                            href="/house/search/?<%= params %>page=<%= Math.min(current+1, count) %>">Next</a>
                     </li>
                 </ul>
             </nav>
-            
 
 
+        </div>
         <h1>Property Search</h1>
 
         <form action="/house/search?" method="GET">
@@ -76,8 +78,8 @@
                     <select name="name">
                         <option value="">Select estate here:</option>
                         <option value="City One Shatin">City One Shatin</option>
-                        <option value="Tai Wai">Tai Wai</option>
-                        <option value="Hung Hom">Hung Hom</option>
+                        <option value="Festival City">Festival City</option>
+                        <option value="Whampoa Garden">Whampoa Garden</option>
                         <option value="Siu Sai Wan">Siu Sai Wan</option>
                     </select>
                 </div>
@@ -92,24 +94,24 @@
                 </div>
             </div>
 
-            <label>Area (Sq feet):</label>
+            <label style="margin: 10px 0px 0px 0px ;">Area (Sq feet):</label>
 
             <div class="row" style="padding: 10px;">
-                <label>Min:</label>
+                <label style="margin: 0px 20px 0px 0px ;">Min:</label>
                 <input style="width: 100px;" min="1" max="999999" type="number" class="form-control" name="rent1"
                     value="">
-                <label>Max:</label>
+                <label style="margin: 0px 20px 0px 20px ;">Max:</label>
                 <input style="width: 100px;" min="1" max="999999" type="number" class="form-control" name="rent2"
                     value="">
             </div>
 
-            <label>Rent(HK$):</label>
+            <label style="margin: 10px 0px 0px 0px ;">Rent(HK$):</label>
 
             <div class="row" style="padding: 10px;">
-                <label>Min:</label>
+                <label style="margin: 0px 20px 0px 0px ;">Min:</label>
                 <input style="width: 100px;" min="1" max="9999" type="number" class="form-control" name="gross_area1"
                     value="">
-                <label>Max:</label>
+                <label style="margin: 0px 20px 0px 20px ;">Max:</label>
                 <input style="width: 100px;" min="1" max="9999" type="number" class="form-control" name="gross_area2"
                     value="">
             </div>

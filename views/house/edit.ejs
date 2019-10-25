@@ -1,7 +1,7 @@
 <!-- edit.ejs -->
 
 
-<!--update.ejs-->
+<!--update-->
 <form action="/house/update/<%= house.id %>" method="POST">
 
 
@@ -9,7 +9,7 @@
 
 
 
-        <!-- The 12 cards -->
+       
 
         <div id="div01" class="card border-white col-12 col-sm-12 col-lg-12 col-xl-12">
             <h1>Property Create form</h1>
@@ -23,10 +23,10 @@
         <div id="div03" class="card border-white col-12 col-sm-6 col-lg-6 col-xl-6">
             <label>Estate:</label>
             <select onchange="" name="House[name]">
-                <option value="City One Shatin">City One Shatin</option>
-                <option value="Tai Wai">Tai Wai</option>
-                <option value="Hung Hom">Hung Hom</option>
-                <option value="Siu Sai Wan">Siu Sai Wan</option>
+                    <option value="City One Shatin">City One Shatin</option>
+                    <option value="Festival City">Festival City</option>
+                    <option value="Whampoa Garden">Whampoa Garden</option>
+                    <option value="Siu Sai Wan">Siu Sai Wan</option>
             </select>
         </div>
 
@@ -62,8 +62,9 @@
         </div>
 
         <div id="div09" class="card border-white col-12 col-sm-6 col-lg-6 col-xl-6">
+
             <div class="form-check mb-3">
-                <input class="form-check-input" name="box" type="checkbox" value="dummy">
+                <input class="form-check-input" name="House[box]" type="checkbox" value=1>
                 <label class="form-check-label">Highlighted Property</label>
             </div>
             <div>
@@ -85,7 +86,7 @@
     </div>
 </form>
 
-
+<!-- delete -->
 <form action="/house/delete/<%= house.id %>" method="POST">
 
     <button type="submit" class="btn btn-danger">delete</button>

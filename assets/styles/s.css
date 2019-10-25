@@ -5,6 +5,12 @@
 
 }
 
+.house_title{
+
+    font-size: x-large;
+    padding: 5px;
+}
+
 #img1{
     margin: 20px;
     overflow: cover;
@@ -14,9 +20,10 @@
 
 #img2{
     margin: 20px;
-    overflow: cover;
-    height: 300px;
-    width: 500px;
+    overflow: hidden;
+    
+    height: 250px;
+    width: 430px;
 }
 
 .home_table {
@@ -27,8 +34,10 @@
 
 .home_td {
     height: 60px;
-    width: 210px;
-    
+    width: 410px;
+
+    font-size: 25px;
+    padding: 10px;
     border-style: solid;
     border-width: thin;
     border-color: #030000;
@@ -65,7 +74,7 @@
 
 .search_td {
      
-    height: 60px;
+    height: 45px;
     width: 500px;
     
     border-style: solid;

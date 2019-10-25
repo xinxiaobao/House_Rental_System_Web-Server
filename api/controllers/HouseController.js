@@ -184,21 +184,6 @@ module.exports = {
 
             } 
             
-            // else if (qBedrooms) {
-
-            //     params = req.url.split("?")[1].split("&page")[0] + "&";
-
-            //     var numOfPage = Math.ceil(await House.count({ name: { contains: qName }, bedrooms: qBedrooms }) / numOfItemsPerPage);
-
-            //     var models = await House.find({
-            //         where: { name: { contains: qName }, bedrooms: qBedrooms },
-            //         sort: 'name',
-            //         limit: numOfItemsPerPage,
-            //         skip: numOfItemsPerPage * qPage
-
-            //     });
-
-            // } 
             
             else if(isNaN(qBedrooms)){
 

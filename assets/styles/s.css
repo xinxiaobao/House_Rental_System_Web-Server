@@ -26,6 +26,13 @@
     width: 430px;
 }
 
+.form_style{
+
+    margin: 7px 0px;
+    font-size:large;
+
+}
+
 .home_table {
     margin: 20px;
     border-collapse: collapse;

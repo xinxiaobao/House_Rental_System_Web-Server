@@ -119,7 +119,7 @@ module.exports = {
                 bedrooms: req.body.House.bedrooms,
                 tenants: req.body.House.tenants,
 
-                box: req.body.House.box,
+                box: req.body.House.box || false,
 
 
             }).fetch();

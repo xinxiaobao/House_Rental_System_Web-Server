@@ -23,9 +23,7 @@ module.exports.routes = {
 
 
 
-  'GET /house/index/:id': 'HouseController.index',
-  'GET /house/search1':'HouseController.search1',
-
+  
 
   'GET /house/search':'HouseController.search',
   'GET /house/search/:id': 'HouseController.search',

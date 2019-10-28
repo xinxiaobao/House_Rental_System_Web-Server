@@ -46,7 +46,7 @@ module.exports = {
     home: async function (req, res) {
 
         var models = await House.find({
-            where: { box: true },
+            where: { box: "true" },
             sort: 'createdAt desc',
             limit: 4
         });
@@ -119,6 +119,8 @@ module.exports = {
                 bedrooms: req.body.House.bedrooms,
                 tenants: req.body.House.tenants,
 
+                box: req.body.House.box,
+
 
             }).fetch();
 
@@ -182,10 +184,10 @@ module.exports = {
 
                 });
 
-            } 
-            
-            
-            else if(isNaN(qBedrooms)){
+            }
+
+
+            else if (isNaN(qBedrooms)) {
 
 
 
@@ -202,14 +204,14 @@ module.exports = {
                 });
 
 
-            }else{
+            } else {
 
                 params = req.url.split("?")[1].split("&page")[0] + "&";
 
                 var numOfPage = Math.ceil(await House.count({ name: { contains: qName }, bedrooms: qBedrooms, rent: { '>=': qRent1 || 0, '<=': qRent2 || 999999 }, gross_area: { '>=': qGross_area1 || 0, '<=': qGross_area2 || 9999 } }) / numOfItemsPerPage);
 
                 var models = await House.find({
-                    where: { name: { contains: qName }, bedrooms: qBedrooms, rent: { '>=': qRent1 || 0, '<=': qRent2 || 999999 }, gross_area: { '>=': qGross_area1 || 0, '<=': qGross_area2 || 9999 }},
+                    where: { name: { contains: qName }, bedrooms: qBedrooms, rent: { '>=': qRent1 || 0, '<=': qRent2 || 999999 }, gross_area: { '>=': qGross_area1 || 0, '<=': qGross_area2 || 9999 } },
                     sort: 'name',
                     limit: numOfItemsPerPage,
                     skip: numOfItemsPerPage * qPage

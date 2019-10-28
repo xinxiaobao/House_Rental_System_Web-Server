@@ -13,7 +13,7 @@
 
 #img1{
     margin: 20px;
-    overflow: cover;
+    overflow: hidden;
     height: 210px;
     width: 210px;
 }

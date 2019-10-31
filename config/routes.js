@@ -23,25 +23,28 @@ module.exports.routes = {
 
 
 
-  
 
-  'GET /house/search':'HouseController.search',
+
+  'GET /house/search': 'HouseController.search',
   'GET /house/search/:id': 'HouseController.search',
 
-  
+
   'GET /house/home/:id': 'HouseController.home',
   'GET /house/admin/:id': 'HouseController.admin',
   'GET /house/view/:id': 'HouseController.view',
 
   'GET /house/edit/:id': 'HouseController.edit',
 
- 
-
   'POST /house/delete/:id': 'HouseController.delete',
 
   'POST /house/update/:id': 'HouseController.update',
 
   'GET /house/update/:id': 'HouseController.update',
+
+
+  'GET /user/login': 'UserController.login',
+  'POST /user/login': 'UserController.login',
+  'POST /user/logout': 'UserController.logout',
 
 
 

@@ -17,26 +17,32 @@ module.exports.bootstrap = async function () {
   // ```
   // // Set up fake development data (or if we already have some, avast)
 
+  sails.bcrypt = require('bcryptjs');
+  const saltRounds = 10;
+
+  if (await House.count() == 0) {
+
+    await House.createEach([
+      { title: "沙田第一城1", ChineseName: "", name: "City One Shatin", gross_area: 11, rent: 11, URL: "/images/pic1.jpg", bedrooms: 1, tenants: 1, box: true, },
+      { title: "大围名城2", ChineseName: "", name: "Festival City", gross_area: 22, rent: 22, URL: "/images/pic2.jpg", bedrooms: 2, tenants: 2, box: true, },
+      { title: "黄埔花园3", ChineseName: "", name: "Whampoa Garden", gross_area: 33, rent: 33, URL: "/images/pic3.jpeg", bedrooms: 3, tenants: 3, box: true, },
+
+      { title: "蓝湾半岛4", ChineseName: "", name: "Siu Sai Wan", gross_area: 44, rent: 44, URL: "/images/pic4.jpg", bedrooms: 4, tenants: 4, box: true, },
+      { title: "沙田第一城5", ChineseName: "", name: "City One Shatin", gross_area: 11, rent: 11, URL: "/images/pic1.jpg", bedrooms: 1, tenants: 1, box: true, },
+      { title: "大围名城6", ChineseName: "", name: "Festival City", gross_area: 22, rent: 22, URL: "/images/pic2.jpg", bedrooms: 2, tenants: 2, box: true, },
+      { title: "黄埔花园7", ChineseName: "", name: "Whampoa Garden", gross_area: 33, rent: 33, URL: "/images/pic3.jpeg", bedrooms: 3, tenants: 3, box: true, },
+
+      { title: "蓝湾半岛8", ChineseName: "", name: "Siu Sai Wan", gross_area: 44, rent: 44, URL: "/images/pic4.jpg", bedrooms: 4, tenants: 4, box: true, },
+
+    ]);
 
 
-  if (await House.count() > 0) {
-    return;
+
+    return generateUsers();
+
   }
 
-  await House.createEach([
-    { title: "沙田第一城1", ChineseName: "", name: "City One Shatin", gross_area: 11, rent: 11, URL: "/images/pic1.jpg", bedrooms: 1, tenants: 1, box: true, },
-    { title: "大围名城2", ChineseName: "", name: "Festival City", gross_area: 22, rent: 22, URL: "/images/pic2.jpg", bedrooms: 2, tenants: 2, box: true, },
-    { title: "黄埔花园3", ChineseName: "", name: "Whampoa Garden", gross_area: 33, rent: 33, URL: "/images/pic3.jpeg", bedrooms: 3, tenants: 3, box: true, },
 
-    { title: "蓝湾半岛4", ChineseName: "", name: "Siu Sai Wan", gross_area: 44, rent: 44, URL: "/images/pic4.jpg", bedrooms: 4, tenants: 4, box: true, },
-    { title: "沙田第一城5", ChineseName: "", name: "City One Shatin", gross_area: 11, rent: 11, URL: "/images/pic1.jpg", bedrooms: 1, tenants: 1, box: true, },
-    { title: "大围名城6", ChineseName: "", name: "Festival City", gross_area: 22, rent: 22, URL: "/images/pic2.jpg", bedrooms: 2, tenants: 2, box: true, },
-    { title: "黄埔花园7", ChineseName: "", name: "Whampoa Garden", gross_area: 33, rent: 33, URL: "/images/pic3.jpeg", bedrooms: 3, tenants: 3, box: true, },
-
-    { title: "蓝湾半岛8", ChineseName: "", name: "Siu Sai Wan", gross_area: 44, rent: 44, URL: "/images/pic4.jpg", bedrooms: 4, tenants: 4, box: true, },
-
-
-  ]);
 
   // // Set up fake development data (or if we already have some, avast)
   // if (await User.count() > 0) {
@@ -49,4 +55,41 @@ module.exports.bootstrap = async function () {
   //   // etc.
   // ]);
   // ```
+
+  async function generateUsers() {
+
+    if (await User.count() > 0) {
+      return;
+    }
+
+    const hash = await sails.bcrypt.hash('123456', saltRounds);
+
+    await User.createEach([
+      { username: "admin", password: hash, role: "admin" },
+      { username: "boss", password: hash },
+      // etc.
+    ]);
+
+    // const martin = await Person.findOne({ name: "Martin Choy" });
+    // const kenny = await Person.findOne({ name: "Kenny Cheng" });
+    // const admin = await User.findOne({ username: "admin" });
+    // const boss = await User.findOne({ username: "boss" });
+
+    // await User.addToCollection(admin.id, 'supervises').members(kenny.id);
+    // await User.addToCollection(boss.id, 'supervises').members([martin.id, kenny.id]);
+
+  }
+
+
+
+
+ 
+
+
+
+
+
+
+
+
 };

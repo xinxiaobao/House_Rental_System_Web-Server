@@ -87,7 +87,15 @@ module.exports = {
 
         if (models.length == 0) return res.notFound();
 
-        return res.ok("House Deleted.");
+        // return res.ok("House Deleted.");
+
+        // return res.redirect("/");
+
+        if (req.wantsJSON){
+            return res.json({message: "House deleted.", url: '/'});    // for ajax request
+        } else {
+            return res.redirect('/');           // for normal request
+        }
 
     },
 

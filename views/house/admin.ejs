@@ -1,15 +1,52 @@
 <table class="table">
-<% i = 1 %>
+    <% i = 1 %>
     <% houses.forEach( function(model) { %>
-   
+
     <tr>
         <th><%= i%></th>
         <th><%= model.title %></th>
         <th><%= model.name%></th>
         <th><a href="/house/edit/<%= model.id %>">edit</a></th>
+        <th><button type="button" class="btn btn-danger" onclick="deleteHouse('<%= model.id %>')">Delete</button></th>
     </tr>
     <% i++ %>
 
     <% }); %>
 
 </table>
+
+
+<script>
+
+    async function deleteHouse(id) {
+
+        var r = confirm("Confirm Delete?");
+
+        if (r) {
+
+            var response = await fetch("/house/" + id, {
+                method: "DELETE",
+                credentials: 'same-origin',
+            });
+
+            // var html = await response.text();
+            // alert(html);
+
+            if (response.ok) {
+                var data = await response.json();
+                alert(data.message);
+                window.location = data.url;
+            } else {
+                alert(response.status + ": " + response.statusText);
+            }
+
+
+
+
+        } else {
+            alert("cancelled");
+        }
+
+    };
+
+</script>

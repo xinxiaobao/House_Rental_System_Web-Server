@@ -37,11 +37,16 @@
                     </tr>
                     <% var updateDate = new Date(house.updatedAt); %>
                     <tr>
-                        <td class="view_td">Updated: <%= updateDate.getFullYear()%>/<%= updateDate.getMonth()%>/<%= updateDate.getDate()%></td>
+                        <td class="view_td">Updated:
+                            <%= updateDate.getFullYear()%>/<%= updateDate.getMonth()%>/<%= updateDate.getDate()%></td>
                     </tr>
-
-
                 </table>
+
+
+                <button type="button" class="btn btn-primary" onclick="rentHouse('<%= house.id %>')">Co-rent</button>
+
+                <button type="button" class="btn btn-danger" onclick="moveoutHouse('<%= house.id %>')">Move-out</button>
+
             </div>
         </div>
     </div>
@@ -49,3 +54,67 @@
 
 
 </div>
+
+<script>
+
+
+    async function rentHouse(id) {
+
+        var r = confirm("Confirm Co-rent?");
+
+        if (r) {
+
+            var response = await fetch("/user/5/rentfrom/add/" + id, {
+                method: "POST",
+                credentials: 'same-origin',
+            });
+
+
+            if (response.ok) {
+                var data = await response.json();   // for res.ok() or res.json()
+                alert(data);
+                location.reload(true);
+            } else if (response.status == 401) {
+                var data = await response.text();   // for res.send()
+                alert(data);
+            } else {
+                alert(response.statusText);
+            }
+
+        }
+
+    };
+
+
+    async function moveoutHouse(id) {
+
+        var r = confirm("Confirm Move out?");
+
+        if (r) {
+
+            var response = await fetch("/user/5/rentfrom/remove/" + id, {
+                method: "POST",
+                credentials: 'same-origin',
+            });
+
+
+            if (response.ok) {
+                var data = await response.json();   // for res.ok() or res.json()
+                alert(data);
+                location.reload(true);
+            } else if (response.status == 401) {
+                var data = await response.text();   // for res.send()
+                alert(data);
+            } else {
+                alert(response.statusText);
+            }
+
+        }
+
+    };
+
+
+
+
+
+</script>

@@ -6,6 +6,7 @@
         <th><%= i%></th>
         <th><%= model.title %></th>
         <th><%= model.name%></th>
+        <th><a href="/house/<%= model.id %>/rentto">Occupants</a></th>
         <th><a href="/house/edit/<%= model.id %>">edit</a></th>
         <th><button type="button" class="btn btn-danger" onclick="deleteHouse('<%= model.id %>')">Delete</button></th>
     </tr>

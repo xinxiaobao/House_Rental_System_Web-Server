@@ -48,8 +48,8 @@ module.exports.routes = {
 
   'GET /house/:id/rentto': 'HouseController.populate',
   'GET /user/:id/rentfrom': 'UserController.populate',
-  'POST /user/:id/rentto/add/:fk': 'UserController.add',
-  'POST /user/:id/rentto/remove/:fk': 'UserController.remove',
+  'POST /user/:id/rentfrom/add/:fk': 'UserController.add',
+  'POST /user/:id/rentfrom/remove/:fk': 'UserController.remove',
 
 
 

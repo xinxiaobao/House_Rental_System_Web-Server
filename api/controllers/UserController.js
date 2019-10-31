@@ -62,6 +62,43 @@ module.exports = {
     
     },
 
+    // action add
+    add: async function (req, res) {
+
+        if (!await User.findOne(req.params.id)) return res.notFound();
+        
+        const thatHouse = await House.findOne(req.params.fk).populate("rentfrom", {id: req.params.id});
+    
+        if (!thatHouse) return res.notFound();
+            
+        if (thatHouse.rentfrom.length)
+            return res.status(409).send("Already added.");   // conflict
+        
+        await User.addToCollection(req.params.id, "rentto").members(req.params.fk);
+    
+        return res.ok('Operation completed.');
+    
+    },
+
+
+    //action remove
+    remove: async function (req, res) {
+
+        if (!await User.findOne(req.params.id)) return res.notFound();
+        
+        const thatHouse = await House.findOne(req.params.fk).populate("rentfrom", {id: req.params.id});
+        
+        if (!thatHouse) return res.notFound();
+    
+        if (!thatHouse.rentfrom.length)
+            return res.status(409).send("Nothing to delete.");    // conflict
+    
+        await User.removeFromCollection(req.params.id, "rentto").members(req.params.fk);
+    
+        return res.ok('Operation completed.');
+    
+    },
+
 
 
 

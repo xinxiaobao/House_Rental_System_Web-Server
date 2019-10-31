@@ -46,6 +46,10 @@ module.exports.routes = {
   'POST /user/login': 'UserController.login',
   'POST /user/logout': 'UserController.logout',
 
+  'GET /house/:id/rentto': 'HouseController.populate',
+  'GET /user/:id/rentfrom': 'UserController.populate',
+  'POST /user/:id/rentto/add/:fk': 'UserController.add',
+  'POST /user/:id/rentto/remove/:fk': 'UserController.remove',
 
 
 

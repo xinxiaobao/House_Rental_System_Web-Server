@@ -28,11 +28,6 @@ module.exports.bootstrap = async function () {
       { title: "黄埔花园3", ChineseName: "", name: "Whampoa Garden", gross_area: 33, rent: 33, URL: "/images/pic3.jpeg", bedrooms: 3, tenants: 3, box: true, },
 
       { title: "蓝湾半岛4", ChineseName: "", name: "Siu Sai Wan", gross_area: 44, rent: 44, URL: "/images/pic4.jpg", bedrooms: 4, tenants: 4, box: true, },
-      { title: "沙田第一城5", ChineseName: "", name: "City One Shatin", gross_area: 11, rent: 11, URL: "/images/pic1.jpg", bedrooms: 1, tenants: 1, box: true, },
-      { title: "大围名城6", ChineseName: "", name: "Festival City", gross_area: 22, rent: 22, URL: "/images/pic2.jpg", bedrooms: 2, tenants: 2, box: true, },
-      { title: "黄埔花园7", ChineseName: "", name: "Whampoa Garden", gross_area: 33, rent: 33, URL: "/images/pic3.jpeg", bedrooms: 3, tenants: 3, box: true, },
-
-      { title: "蓝湾半岛8", ChineseName: "", name: "Siu Sai Wan", gross_area: 44, rent: 44, URL: "/images/pic4.jpg", bedrooms: 4, tenants: 4, box: true, },
 
     ]);
 
@@ -70,24 +65,25 @@ module.exports.bootstrap = async function () {
       // etc.
     ]);
 
-    // const martin = await Person.findOne({ name: "Martin Choy" });
-    // const kenny = await Person.findOne({ name: "Kenny Cheng" });
+
+
+    const cos = await House.findOne({ name: "City One Shatin" });
+    const fc = await House.findOne({ name: "Festival City"});
+    const admin = await User.findOne({ username: "admin" });
+    const boss = await User.findOne({ username: "boss" });
+
+    await User.addToCollection(admin.id, 'rentto').members(cos.id);
+    await User.addToCollection(boss.id, 'rentto').members([fc.id, cos.id]);
+
+    // const martin = await House.findOne({ name: "Martin Choy" });
+    // const kenny = await House.findOne({ name: "Kenny Cheng" });
     // const admin = await User.findOne({ username: "admin" });
     // const boss = await User.findOne({ username: "boss" });
 
-    // await User.addToCollection(admin.id, 'supervises').members(kenny.id);
-    // await User.addToCollection(boss.id, 'supervises').members([martin.id, kenny.id]);
+    // await User.addToCollection(admin.id, 'rentto').members(kenny.id);
+    // await User.addToCollection(boss.id, 'rentto').members([martin.id, kenny.id]);
 
   }
-
-
-
-
- 
-
-
-
-
 
 
 

@@ -51,6 +51,18 @@ module.exports = {
     },
 
 
+    //action populate
+    populate: async function (req, res) {
+
+        var model = await User.findOne(req.params.id).populate("rentto");
+    
+        if (!model) return res.notFound();
+    
+        return res.json(model);
+    
+    },
+
+
 
 
 

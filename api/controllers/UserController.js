@@ -45,8 +45,11 @@ module.exports = {
 
             if (err) return res.serverError(err);
 
-            return res.ok("Log out successfully.");
+            // return res.ok("Log out successfully.");
 
+
+            
+            return res.redirect("/");
         });
     },
 
@@ -99,19 +102,6 @@ module.exports = {
 
     },
 
-    //action myrentals
-
-    // myrentals: async function (req, res) {
-
-    //     req.session.username == "boss"
-
-    //     var model = await House.findOne(req.params.id);
-
-    //     if (!model) return res.notFound();
-
-    //     return res.view('house/view', { house: model });
-
-    // },
     myrentals: async function (req, res) {
 
         var model = await User.findOne(req.params.id).populate("rentto");

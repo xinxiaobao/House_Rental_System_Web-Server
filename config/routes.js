@@ -53,6 +53,7 @@ module.exports.routes = {
   'POST /user/:id/rentfrom/remove/:fk': 'UserController.remove',
 
   'GET /user/:id/myrentals': 'UserController.myrentals',
+  'GET /house/:id/occupants': 'HouseController.occupants',
 
   /***************************************************************************
   *                                                                          *

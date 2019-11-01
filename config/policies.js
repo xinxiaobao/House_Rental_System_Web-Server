@@ -22,7 +22,18 @@ module.exports.policies = {
 
     create: 'isAdmin',
 
-    admin: 'isAdmin'
+    admin: 'isAdmin',
+
+    
+
+  },
+
+
+  UserController: {
+
+    myrentals:'isClient',
+
+    
 
   }
 

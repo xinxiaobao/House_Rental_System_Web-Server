@@ -52,7 +52,7 @@ module.exports.routes = {
   'POST /user/:id/rentfrom/add/:fk': 'UserController.add',
   'POST /user/:id/rentfrom/remove/:fk': 'UserController.remove',
 
-
+  'GET /user/:id/myrentals': 'UserController.myrentals',
 
   /***************************************************************************
   *                                                                          *

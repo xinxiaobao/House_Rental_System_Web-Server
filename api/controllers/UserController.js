@@ -55,29 +55,29 @@ module.exports = {
     populate: async function (req, res) {
 
         var model = await User.findOne(req.params.id).populate("rentto");
-    
+
         if (!model) return res.notFound();
-    
+
         return res.json(model);
-    
+
     },
 
     // action add
     add: async function (req, res) {
 
         if (!await User.findOne(req.params.id)) return res.notFound();
-        
-        const thatHouse = await House.findOne(req.params.fk).populate("rentfrom", {id: req.params.id});
-    
+
+        const thatHouse = await House.findOne(req.params.fk).populate("rentfrom", { id: req.params.id });
+
         if (!thatHouse) return res.notFound();
-            
+
         if (thatHouse.rentfrom.length)
             return res.status(409).send("Already added.");   // conflict
-        
+
         await User.addToCollection(req.params.id, "rentto").members(req.params.fk);
-    
+
         return res.ok('Operation completed.');
-    
+
     },
 
 
@@ -85,18 +85,41 @@ module.exports = {
     remove: async function (req, res) {
 
         if (!await User.findOne(req.params.id)) return res.notFound();
-        
-        const thatHouse = await House.findOne(req.params.fk).populate("rentfrom", {id: req.params.id});
-        
+
+        const thatHouse = await House.findOne(req.params.fk).populate("rentfrom", { id: req.params.id });
+
         if (!thatHouse) return res.notFound();
-    
+
         if (!thatHouse.rentfrom.length)
             return res.status(409).send("Nothing to delete.");    // conflict
-    
+
         await User.removeFromCollection(req.params.id, "rentto").members(req.params.fk);
-    
+
         return res.ok('Operation completed.');
-    
+
+    },
+
+    //action myrentals
+
+    // myrentals: async function (req, res) {
+
+    //     req.session.username == "boss"
+
+    //     var model = await House.findOne(req.params.id);
+
+    //     if (!model) return res.notFound();
+
+    //     return res.view('house/view', { house: model });
+
+    // },
+    myrentals: async function (req, res) {
+
+        var model = await User.findOne(req.params.id).populate("rentto");
+
+        if (!model) return res.notFound();
+
+        return res.view('user/myrentals',{houses: model} );
+
     },
 
 

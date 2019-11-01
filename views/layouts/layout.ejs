@@ -59,10 +59,41 @@
         <div class="navbar-nav">
           <a class="nav-item nav-link active" href="/house/home">Home <span class="sr-only">(current)</span></a>
           <a class="nav-item nav-link" href="/house/search">Search</a>
+
+          <% if (session.username == "admin"){ %>
           <a class="nav-item nav-link" href="/house/create">Create</a>
           <a class="nav-item nav-link" href="/house/admin">Admin</a>
+          <% } %>
+
+          <% if (session.username == "boss"){ %>
+
+            <a class="nav-item nav-link" href="/user/5/myrentals">My Rentals</a>
+
+          <% } %>
+
+       
+
+
+
+
         </div>
       </div>
+      <form class="form-inline">
+
+        <% if (session.username){ %>
+
+        <span class="nav-item nav-link">Hi,<%= session.username %>.</span>
+
+        <a class="nav-item nav-link" href="/user/logout">(logout)</a>
+
+
+        <% } %>
+
+        <% if (!session.username){ %>
+        <a class="nav-item nav-link" href="/user/login">login</a>
+        <% } %>
+
+      </form>
     </nav>
 
     <div class="jumbotron jumbotron-fluid">

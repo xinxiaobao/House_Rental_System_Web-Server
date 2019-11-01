@@ -1,0 +1,25 @@
+    <div class="card col-12 col-sm-12 col-lg-6 col-xl-6">
+            <a class="house_title" href="/house/view/<%= houses.rentto[0].id %>"><%= houses.rentto[0].name %></a>
+            <div class="row">
+
+
+                <div>
+                    <img id="img1" src="<%= houses.rentto[0].URL %>" >
+                </div>
+                <div>
+
+                    <table class="home_table">
+
+                        <tr>
+                            <td class="home_td">Estate:<%= houses.rentto[0].name %></td>
+                        </tr>
+                        <tr>
+                            <td class="home_td">Gross Area:<%= houses.rentto[0].gross_area %></td>
+                        </tr>
+                        <tr>
+                            <td class="home_td">Rent: $<%= houses.rentto[0].rent %></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>

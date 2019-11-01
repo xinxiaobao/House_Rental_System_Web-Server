@@ -20,9 +20,11 @@ module.exports.policies = {
   // '*': true,
   HouseController: {
 
-    create: 'isAdmin'
+    create: 'isAdmin',
 
-}
+    admin: 'isAdmin'
+
+  }
 
 
 };

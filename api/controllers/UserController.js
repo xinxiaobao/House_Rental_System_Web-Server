@@ -86,11 +86,11 @@ module.exports = {
 
         const numberofrental = thatHouse.rentfrom.length;
 
-        console.log(thatHouse.tenants);
-        console.log(numberofrental);
-        console.log(numberofHouse.rentfrom.length);
+        // console.log(thatHouse.tenants);
+        // console.log(numberofrental);
+        // console.log(numberofHouse.rentfrom.length);
 
-        console.log(0);
+        // console.log(0);
 
         if (thatHouse.tenants > numberofHouse.rentfrom.length) {
 

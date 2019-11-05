@@ -1,6 +1,24 @@
-<% console.log(users) %>
-
-<% console.log(1) %>
 
 
-<span><%= users.rentfrom[0].username %></span>
+<h1>Occupants List:</h1>
+<br>
+
+<% if(!users.rentfrom[0]){ %>
+
+<h2>No Occupant</h2>
+
+<% }else{ %>
+
+<% i = 0 %>
+<% users.rentfrom.forEach( function(model) { %>
+
+
+<h2><%= model.username %></h2>
+
+<% i++ %>
+<% }); %>
+
+
+
+
+<% } %>

@@ -26,8 +26,10 @@
         if (response.ok) {
             var data = await response.json();   // for res.ok() or res.json()
             alert(data);
-            location.reload(true);
-            return res.redirect("/");
+            // location.reload(true);
+
+            location.replace('/');
+            // return res.redirect("/");
         } else if (response.status == 401) {
             var data = await response.text();   // for res.send()
             alert(data);

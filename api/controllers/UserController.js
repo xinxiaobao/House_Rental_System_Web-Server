@@ -47,8 +47,8 @@ module.exports = {
 
             // return res.ok("Log out successfully.");
 
+            // alert("Log out successfully.");
 
-            
             return res.redirect("/");
         });
     },
@@ -108,7 +108,7 @@ module.exports = {
 
         if (!model) return res.notFound();
 
-        return res.view('user/myrentals',{houses: model} );
+        return res.view('user/myrentals', { houses: model });
 
     },
 

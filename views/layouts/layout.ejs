@@ -68,30 +68,35 @@
           <% if (session.role == "client"){ %>
 
 
-            <% console.log(22) %>
-            
-           
-       
 
-            <a class="nav-item nav-link" href="/user/<%= session.userid %>/myrentals">My Rentals</a>
+
+
+
+
+          <a class="nav-item nav-link" href="/user/<%= session.userid %>/myrentals">My Rentals</a>
 
           <% } %>
 
-       
+
 
 
 
 
         </div>
       </div>
-      <form class="form-inline">
+      <div class="form-inline">
+
+
 
         <% if (session.username){ %>
 
         <span class="nav-item nav-link">Hi,<%= session.username %>.</span>
 
-        <a class="nav-item nav-link" href="/user/logout">(logout)</a>
+        <form action="/user/logout" method="POST" onsubmit="return confirm('Are you sure to logout?')">
 
+          <button type="submit" class="btn btn-link">logout</button>
+
+        </form>
 
         <% } %>
 
@@ -99,7 +104,7 @@
         <a class="nav-item nav-link" href="/user/login">login</a>
         <% } %>
 
-      </form>
+      </div>
     </nav>
 
     <div class="jumbotron jumbotron-fluid">
@@ -191,6 +196,8 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
+
+
 
 </body>
 

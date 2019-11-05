@@ -61,7 +61,7 @@ module.exports.bootstrap = async function () {
 
     await User.createEach([
       { username: "admin", password: hash, role: "admin" },
-      { username: "boss", password: hash, role:"admin" },
+      { username: "boss", password: hash },
       { username: "client1", password: hash },
       { username: "client2", password: hash },
       { username: "client3", password: hash },
@@ -75,11 +75,13 @@ module.exports.bootstrap = async function () {
 
     const cos = await House.findOne({ name: "City One Shatin" });
     const fc = await House.findOne({ name: "Festival City"});
-    const admin = await User.findOne({ username: "admin" });
     const boss = await User.findOne({ username: "boss" });
+    const client1 = await User.findOne({ username: "client1" });
+    const client2 = await User.findOne({ username: "client2" });
 
-    await User.addToCollection(admin.id, 'rentto').members(cos.id);
-    await User.addToCollection(boss.id, 'rentto').members([fc.id, cos.id]);
+    await User.addToCollection(boss.id, 'rentto').members(cos.id);
+    await User.addToCollection(client1.id, 'rentto').members(cos.id);
+    await User.addToCollection(client2.id, 'rentto').members([fc.id, cos.id]);
 
     // const martin = await House.findOne({ name: "Martin Choy" });
     // const kenny = await House.findOne({ name: "Kenny Cheng" });
@@ -90,7 +92,6 @@ module.exports.bootstrap = async function () {
     // await User.addToCollection(boss.id, 'rentto').members([martin.id, kenny.id]);
 
   }
-
 
 
 

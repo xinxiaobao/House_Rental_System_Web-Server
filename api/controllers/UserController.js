@@ -32,7 +32,7 @@ module.exports = {
             req.session.userid = user.id;
 
             req.session.role = user.role;
-            
+
 
             sails.log("[Session] ", req.session);
 
@@ -77,14 +77,31 @@ module.exports = {
 
         const thatHouse = await House.findOne(req.params.fk).populate("rentfrom", { id: req.params.id });
 
+        const numberofHouse = await House.findOne(req.params.fk).populate("rentfrom");
+
         if (!thatHouse) return res.notFound();
 
         if (thatHouse.rentfrom.length)
             return res.status(409).send("Already added.");   // conflict
 
-        await User.addToCollection(req.params.id, "rentto").members(req.params.fk);
+        const numberofrental = thatHouse.rentfrom.length;
 
-        return res.ok('Operation completed.');
+        console.log(thatHouse.tenants);
+        console.log(numberofrental);
+        console.log(numberofHouse.rentfrom.length);
+
+        console.log(0);
+
+        if (thatHouse.tenants > numberofHouse.rentfrom.length) {
+
+            await User.addToCollection(req.params.id, "rentto").members(req.params.fk);
+
+            return res.ok('Operation completed.');
+        }else{
+
+            return res.status(409).send("Already full.");   // conflict
+
+        }
 
     },
 

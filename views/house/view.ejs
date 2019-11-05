@@ -43,13 +43,36 @@
                 </table>
 
 
-                <% console.log() %>
+                <% var count1 = occupants.rentfrom.length %>
+                <% var count2 = userstate.rentfrom.length %>
 
 
 
-                <button type="button" class="btn btn-primary" onclick="rentHouse('<%= house.id %>')">Co-rent</button>
 
-                <button type="button" class="btn btn-danger" onclick="moveoutHouse('<%= house.id %>')">Move-out</button>
+
+                <div style="padding-left: 25px;">
+
+
+
+                    <% if(req.session.username){ %>
+
+                    <% if(count2 == 0){ %>
+                    <button type="button" class="btn btn-primary"
+                        onclick="rentHouse('<%= house.id %>')">Co-rent</button>
+
+                    <% }else{ %>
+
+                    <button type="button" class="btn btn-danger"
+                        onclick="moveoutHouse('<%= house.id %>')">Move-out</button>
+                    <% } %>
+
+
+
+                    <%  } %>
+                </div>
+                <!-- <button type="button" class="btn btn-primary" onclick="rentHouse('<%= house.id %>')">Co-rent</button> -->
+
+                <!-- <button type="button" class="btn btn-danger" onclick="moveoutHouse('<%= house.id %>')">Move-out</button> -->
 
             </div>
         </div>

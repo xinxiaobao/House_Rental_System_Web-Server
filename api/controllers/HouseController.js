@@ -61,9 +61,17 @@ module.exports = {
 
         var model = await House.findOne(req.params.id);
 
+
+
         if (!model) return res.notFound();
 
-        return res.view('house/view', { house: model });
+        var occupants = await House.findOne(req.params.id).populate("rentfrom");
+
+        var userstate = await House.findOne(req.params.id).populate("rentfrom", {username: req.session.username});
+
+   
+
+        return res.view('house/view', { house: model, occupants: occupants, userstate:userstate });
 
     },
 
@@ -91,8 +99,8 @@ module.exports = {
 
         // return res.redirect("/");
 
-        if (req.wantsJSON){
-            return res.json({message: "House deleted.", url: '/'});    // for ajax request
+        if (req.wantsJSON) {
+            return res.json({ message: "House deleted.", url: '/' });    // for ajax request
         } else {
             return res.redirect('/');           // for normal request
         }
@@ -256,11 +264,11 @@ module.exports = {
 
         if (!model) return res.notFound();
 
-        return res.view('house/occupants',{ users: model});
+        return res.view('house/occupants', { users: model });
 
     },
 
- 
+
 
 
 

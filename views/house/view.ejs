@@ -43,6 +43,10 @@
                 </table>
 
 
+                <% console.log() %>
+
+
+
                 <button type="button" class="btn btn-primary" onclick="rentHouse('<%= house.id %>')">Co-rent</button>
 
                 <button type="button" class="btn btn-danger" onclick="moveoutHouse('<%= house.id %>')">Move-out</button>
@@ -64,7 +68,7 @@
 
         if (r) {
 
-            var response = await fetch("/user/7/rentfrom/add/" + id, {
+            var response = await fetch("/user/<%= session.userid %>/rentfrom/add/" + id, {
                 method: "POST",
                 credentials: 'same-origin',
             });
@@ -92,7 +96,7 @@
 
         if (r) {
 
-            var response = await fetch("/user/7/rentfrom/remove/" + id, {
+            var response = await fetch("/user/<%= session.userid %>/rentfrom/remove/" + id, {
                 method: "POST",
                 credentials: 'same-origin',
             });

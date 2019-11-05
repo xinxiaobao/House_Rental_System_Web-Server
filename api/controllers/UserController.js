@@ -29,6 +29,11 @@ module.exports = {
 
             req.session.username = req.body.username;
 
+            req.session.userid = user.id;
+
+            req.session.role = user.role;
+            
+
             sails.log("[Session] ", req.session);
 
             return res.ok("Login successfully.");

@@ -60,12 +60,12 @@
           <a class="nav-item nav-link active" href="/house/home">Home <span class="sr-only">(current)</span></a>
           <a class="nav-item nav-link" href="/house/search">Search</a>
 
-          <% if (session.username == "admin"){ %>
+          <% if (session.role == "admin"){ %>
           <a class="nav-item nav-link" href="/house/create">Create</a>
           <a class="nav-item nav-link" href="/house/admin">Admin</a>
           <% } %>
 
-          <% if (session.username == "boss"){ %>
+          <% if (session.role == "client"){ %>
 
 
             <% console.log(22) %>
@@ -73,7 +73,7 @@
            
        
 
-            <a class="nav-item nav-link" href="/user/7/myrentals">My Rentals</a>
+            <a class="nav-item nav-link" href="/user/<%= session.userid %>/myrentals">My Rentals</a>
 
           <% } %>
 

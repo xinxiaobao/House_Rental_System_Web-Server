@@ -3,7 +3,7 @@ module.exports = async function (req, res, proceed) {
 
     // const isUserAdmin = false;
 
-    if (req.session.username == 'boss') {
+    if (req.session.role == 'client') {
         return proceed();   //proceed to the next policy,
     }
 

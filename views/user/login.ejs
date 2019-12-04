@@ -24,14 +24,14 @@
         });
 
         if (response.ok) {
-            var data = await response.json();   // for res.ok() or res.json()
+            var data = await response.json();   
             alert(data);
-            // location.reload(true);
+            
 
             location.replace('/');
-            // return res.redirect("/");
+            
         } else if (response.status == 401) {
-            var data = await response.text();   // for res.send()
+            var data = await response.text();   
             alert(data);
         } else {
             alert(response.statusText);

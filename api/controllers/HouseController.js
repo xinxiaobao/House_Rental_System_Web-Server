@@ -248,7 +248,7 @@ module.exports = {
     //action populate
     populate: async function (req, res) {
 
-        var model = await House.findOne(req.params.id).populate("rentfrom");
+        var model = await House.findOne(req.session.userid).populate("rentfrom");
 
         if (!model) return res.notFound();
 

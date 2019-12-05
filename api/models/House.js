@@ -13,6 +13,10 @@ module.exports = {
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
 
+    title: {
+      type: "string"
+    },
+
     ChineseName: {
       type: "string"
     },

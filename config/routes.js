@@ -47,12 +47,12 @@ module.exports.routes = {
   'POST /user/login': 'UserController.login',
   'POST /user/logout': 'UserController.logout',
 
-  'GET /house/:id/rentto': 'HouseController.populate',
-  'GET /user/:id/rentfrom': 'UserController.populate',
+  'GET /house/rentto': 'HouseController.populate',
+  'GET /user/rentfrom': 'UserController.populate',
   'POST /user/:id/rentfrom/add/:fk': 'UserController.add',
   'POST /user/:id/rentfrom/remove/:fk': 'UserController.remove',
 
-  'GET /user/:id/myrentals': 'UserController.myrentals',
+  'GET /user/myrentals': 'UserController.myrentals',
   'GET /house/:id/occupants': 'HouseController.occupants',
 
   /***************************************************************************

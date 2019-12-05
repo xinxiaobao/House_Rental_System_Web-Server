@@ -62,7 +62,7 @@ module.exports = {
     //action populate
     populate: async function (req, res) {
 
-        var model = await User.findOne(req.params.id).populate("rentto");
+        var model = await User.findOne(req.session.userid).populate("rentto");
 
         if (!model) return res.notFound();
 
@@ -126,7 +126,7 @@ module.exports = {
 
     myrentals: async function (req, res) {
 
-        var model = await User.findOne(req.params.id).populate("rentto");
+        var model = await User.findOne(req.session.userid).populate("rentto");
 
         if (!model) return res.notFound();
 

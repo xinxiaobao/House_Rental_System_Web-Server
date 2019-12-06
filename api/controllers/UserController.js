@@ -73,7 +73,7 @@ module.exports = {
     // action add
     add: async function (req, res) {
 
-        if (!await User.findOne(req.params.id)) return res.notFound();
+        if (!await User.findOne(req.session.userid)) return res.notFound();
 
         const thatHouse = await House.findOne(req.params.fk).populate("rentfrom", { id: req.params.id });
 
@@ -94,7 +94,7 @@ module.exports = {
 
         if (thatHouse.tenants > numberofHouse.rentfrom.length) {
 
-            await User.addToCollection(req.params.id, "rentto").members(req.params.fk);
+            await User.addToCollection(req.session.userid, "rentto").members(req.params.fk);
 
             return res.ok('Operation completed.');
         }else{
@@ -109,7 +109,7 @@ module.exports = {
     //action remove
     remove: async function (req, res) {
 
-        if (!await User.findOne(req.params.id)) return res.notFound();
+        if (!await User.findOne(req.session.userid)) return res.notFound();
 
         const thatHouse = await House.findOne(req.params.fk).populate("rentfrom", { id: req.params.id });
 
@@ -118,7 +118,7 @@ module.exports = {
         if (!thatHouse.rentfrom.length)
             return res.status(409).send("Nothing to delete.");    // conflict
 
-        await User.removeFromCollection(req.params.id, "rentto").members(req.params.fk);
+        await User.removeFromCollection(req.session.userid, "rentto").members(req.params.fk);
 
         return res.ok('Operation completed.');
 

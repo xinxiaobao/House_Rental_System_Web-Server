@@ -91,7 +91,7 @@
 
         if (r) {
 
-            var response = await fetch("/user/<%= session.userid %>/rentfrom/add/" + id, {
+            var response = await fetch("/user/rentfrom/add/" + id, {
                 method: "POST",
                 credentials: 'same-origin',
             });
@@ -119,7 +119,7 @@
 
         if (r) {
 
-            var response = await fetch("/user/<%= session.userid %>/rentfrom/remove/" + id, {
+            var response = await fetch("/user/rentfrom/remove/" + id, {
                 method: "POST",
                 credentials: 'same-origin',
             });

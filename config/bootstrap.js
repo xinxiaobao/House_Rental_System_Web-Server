@@ -27,7 +27,7 @@ module.exports.bootstrap = async function () {
       { title: "大围名城2", ChineseName: "大围名城2", name: "Festival City", gross_area: 22, rent: 22, URL: "https://si.wsj.net/public/resources/images/B3-DM067_RIGHTS_IM_20190319162958.jpg", bedrooms: 2, tenants: 2, box: true, },
       { title: "黄埔花园3", ChineseName: "黄埔花园3", name: "Whampoa Garden", gross_area: 33, rent: 33, URL: "https://imagez.tmz.com/image/e7/4by3/2019/10/09/e79c6d9690ed403ebca905cc2923ee04_md.jpg", bedrooms: 3, tenants: 3, box: true, },
 
-      { title: "蓝湾半岛4", ChineseName: "蓝湾半岛4", name: "Siu Sai Wan", gross_area: 44, rent: 44, URL: "https://www.listenmoneymatters.com/wp-content/uploads/2018/04/LMM-Cover-Images-2.jpg", bedrooms: 4, tenants: 4, box: true, },
+      { title: "蓝湾半岛4", ChineseName: "蓝湾半岛4", name: "Island Resort", gross_area: 44, rent: 44, URL: "https://www.listenmoneymatters.com/wp-content/uploads/2018/04/LMM-Cover-Images-2.jpg", bedrooms: 4, tenants: 4, box: true, },
 
     ]);
 

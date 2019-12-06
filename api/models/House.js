@@ -48,6 +48,10 @@ module.exports = {
     box:{
       type:"boolean"
     },
+    address: {
+      type: "string"
+    },
+
 
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗

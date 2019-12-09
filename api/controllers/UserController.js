@@ -82,7 +82,9 @@ module.exports = {
         if (!thatHouse) return res.notFound();
 
         if (thatHouse.rentfrom.length)
-            return res.status(409).send("Already added.");   // conflict
+        
+            return res.ok('Already Full !');
+        // return res.status(409).send("Already added.");   // conflict
 
         const numberofrental = thatHouse.rentfrom.length;
 
@@ -97,9 +99,10 @@ module.exports = {
             await User.addToCollection(req.session.userid, "rentto").members(req.params.fk);
 
             return res.ok('Operation completed.');
-        }else{
+        } else {
 
-            return res.status(409).send("Already full.");   // conflict
+            return res.ok('Already Added !');
+            // return res.status(409).send("Already full.");   // conflict
 
         }
 

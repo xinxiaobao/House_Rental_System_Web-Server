@@ -26,11 +26,11 @@ Note:  Generators are usually run using the globally-installed `sails` CLI (comm
 
 ## Set up
 1. install npm 
-input 'npm install' in terminal
+### input 'npm install' in terminal
 
 1. start server
-input 'sails lift'
-chose '1'
+### input 'sails lift'
+### chose '1'
 
 1. web address: localhost:1337
 
